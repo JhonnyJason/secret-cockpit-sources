@@ -1,6 +1,6 @@
 {
-  "name": "Sample Manifest Sample",
-  "short_name": "Sample",
+  "name": "SecretCockpit",
+  "short_name": "SeCock",
   "icons": [{
     "src": "img/sample-icon.png",
       "sizes": "64x64",
