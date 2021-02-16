@@ -1,27 +1,31 @@
 // header styles
+header-padding = 10px
+settings-button-size = 33px
+
+// header-logo-size = 45px
+// #header-logo
+//     width header-logo-size
+//     height header-logo-size
+
 #header
+    background-color element-background 
+    padding header-padding
     position fixed
-    z-index 75
     top 0
     left 0
-    overflow hidden
-    height: header-height
-    width: 100%
+    width 100%
     box-sizing: border-box
-    padding 15px
-    display flex
-    background-color rgba(255, 255, 255, 0.1)
+    display: flex
+    flex-direction: row
     justify-content: space-between
+    align-items: center
 
-#header-right  
-    margin-left auto
+    .click-button
+        border-radius: 20%
 
-#settings-icon
-    height 50px
-    width 50px
-    color cd-bright
+#header-right
+    margin-left: auto
 
-.click-button
-    cursor pointer
-
-
+#settings-button
+    width settings-button-size
+    height settings-button-size

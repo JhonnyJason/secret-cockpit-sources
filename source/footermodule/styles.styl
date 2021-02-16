@@ -1,0 +1,32 @@
+// footer styles
+footer-padding = 10px
+telegram-button-size = 33px
+github-button-size = 33px
+
+#footer
+    background-color element-background 
+    padding footer-padding
+    position fixed
+    bottom 0
+    left 0
+    width 100%
+    box-sizing: border-box
+    display: flex
+    flex-direction: row
+    justify-content: flex-end
+    align-items: center
+
+    .click-button
+        border-radius: 20%
+        margin-left 20px
+
+#github-button
+    width github-button-size
+    height github-button-size
+
+#telegram-button
+    width telegram-button-size
+    height telegram-button-size
+
+// #footer
+//     a.click-button(href="https://github.com/JhonnyJason/pool-swap-ui"): svg#github-button: use(href="#svg-github-icon")

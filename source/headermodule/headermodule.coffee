@@ -12,10 +12,8 @@ print = (arg) -> console.log(arg)
 ############################################################
 headermodule.initialize = ->
     log "headermodule.initialize"
-    state = allModules.statemodule
-    settingsPage = allModules.settingspagemodule
-        
-    headerRight.addEventListener("click", settingsPage.slideIn)
+    settings = allModules.settingspagemodule  
+    headerRight.addEventListener("click", settings.slideIn)
     return
     
 module.exports = headermodule
