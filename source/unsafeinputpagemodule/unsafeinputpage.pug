@@ -1,0 +1,11 @@
+//- settingspage structure
+extends ../slideinframemodule/slideinframe.pug
+block content
+    #unsafeinputpage-content        
+        h2 Unsafe Secrets Input
+        input#unsafe-secret-input(type="text" value="0xdeadbeefdeadbeefdeadbeefdeadbeef")
+        #unsafe-input-button-container
+            #scan-qr-button.click-button: svg: use(href="#svg-qrscan-icon")
+            #create-unsafe-button.click-button: svg: use(href="#svg-add-icon")
+            
+        p Unsafe secrets are called "unsafe" because they are stored on your device. This means they can be used conveniently after you have imported them. Also you may easily export and import them by copy-pasting or by using QR-codes.

@@ -1,11 +1,11 @@
 // footer styles
-footer-padding = 10px
-telegram-button-size = 33px
-github-button-size = 33px
+bar-icon-size ?= 33px
+bar-icon-padding ?= 7px
+bar-height ?= bar-icon-size + 2 * bar-icon-padding
 
 #footer
     background-color element-background 
-    padding footer-padding
+    padding bar-icon-padding
     position fixed
     bottom 0
     left 0
@@ -21,12 +21,12 @@ github-button-size = 33px
         margin-left 20px
 
 #github-button
-    width github-button-size
-    height github-button-size
+    width bar-icon-size
+    height bar-icon-size
 
 #telegram-button
-    width telegram-button-size
-    height telegram-button-size
+    width bar-icon-size
+    height bar-icon-size
 
 // #footer
 //     a.click-button(href="https://github.com/JhonnyJason/pool-swap-ui"): svg#github-button: use(href="#svg-github-icon")

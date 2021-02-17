@@ -1,6 +1,7 @@
 // header styles
-header-padding = 10px
-settings-button-size = 33px
+bar-icon-size ?= 33px
+bar-icon-padding ?= 7px
+bar-height ?= bar-icon-size + 2 * bar-icon-padding
 
 // header-logo-size = 45px
 // #header-logo
@@ -9,7 +10,7 @@ settings-button-size = 33px
 
 #header
     background-color element-background 
-    padding header-padding
+    padding bar-icon-padding
     position fixed
     top 0
     left 0
@@ -27,5 +28,5 @@ settings-button-size = 33px
     margin-left: auto
 
 #settings-button
-    width settings-button-size
-    height settings-button-size
+    width bar-icon-size
+    height bar-icon-size

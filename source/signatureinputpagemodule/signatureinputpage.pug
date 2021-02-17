@@ -1,0 +1,7 @@
+//- settingspage structure
+extends ../slideinframemodule/slideinframe.pug
+block content
+    #signatureinputpage-content        
+        h2 Signature Secrets Input
+        p This is for secrets generated from a signed seed messsage. This way we let metamask handle the secrecy.
+        input#signature-secret-input(type="text" value="I am a funny seed :-)")

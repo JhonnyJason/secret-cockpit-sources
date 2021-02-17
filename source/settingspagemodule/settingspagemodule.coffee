@@ -24,43 +24,37 @@ settingspagemodule.initialize = () ->
     # settingspageContent.
     slideinModule.wireUp(settingspageContent, clearContent, applyContent)
 
-    ##for debugging    
-    # settingspagemodule.slideIn()
-
-    syncSecretManagerURLFromState()
-    state.addOnChangeListener("secretManagerURL", syncSecretManagerURLFromState)
+    syncSettingsFromState()
     return
 
 ############################################################
 #region internalFunctions
 clearContent = ->
     log "clearContent"
-    syncSecretManagerURLFromState()
+    syncSettingsFromState()
     return
 
 applyContent = ->
     log "applyContent"
     secretManagerURL = secretManagerInput.value
     state.save("secretManagerURL", secretManagerURL)
+    keyloggerProtection = keyloggerProtectionInput.checked
+    state.save("keyloggerProtection", keyloggerProtection)
     return
 
 ############################################################
-syncSecretManagerURLFromState = ->
+syncSettingsFromState = ->
     log "syncSecretManagerURLFromState"
     secretManagerURL = state.load("secretManagerURL")
-    settingspagemodule.displaySecretManagerURL(secretManagerURL)
+    secretManagerInput.value = secretManagerURL
+    keyloggerProtection = state.load("keyloggerProtection")
+    keyloggerProtectionInput.checked = keyloggerProtection
     return
 
 #endregion
 
 ############################################################
 #region exposedFunctions
-settingspagemodule.displaySecretManagerURL = (url) ->
-    log "settingspagemodule.displaySecretManager"
-    secretManagerInput.value = url
-    return
-
-############################################################
 settingspagemodule.slideOut = ->
     log "settingspagemodule.slideOut"
     slideinModule.slideoutForContentElement(settingspageContent)
