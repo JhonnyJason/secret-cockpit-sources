@@ -10,23 +10,41 @@ print = (arg) -> console.log(arg)
 #endregion
 
 ############################################################
-#region localMOdules
+#region localModules
+clientFactory  = require("secret-manager-client")
+
+############################################################
 state = null
 slideinModule = null
 
 #endregion
 
 ############################################################
-unsafeinputpagemodule.initialize = () ->
+unsafeinputpagemodule.initialize = ->
     log "unsafeinputpagemodule.initialize"
     state = allModules.statemodule
     slideinModule = allModules.slideinframemodule
     # unsafeinputpageContent.
     slideinModule.wireUp(unsafeinputpageContent, clearContent, applyContent)
+
+    createUnsafeButton.addEventListener("click", createUnsafeButtonClicked)
+    scanQrButton.addEventListener("click", scanQrButtonClicked)
     return
 
 ############################################################
 #region internalFunctions
+createUnsafeButtonClicked = ->
+    log "createUnsafeButtonClicked"
+    url = state.get("secretManagerURL")
+    newClient = await clientFactory.createClient(null, null, url)
+    unsafeSecretInput.value = newClient.secretKeyHex
+    return
+
+scanQrButtonClicked = ->
+    log "scanQrButtonClicked"
+    return
+
+############################################################
 clearContent = ->
     log "clearContent"
     unsafeSecretInput.value = "0xdeadbeefdeadbeefdeadbeefdeadbeef"

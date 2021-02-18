@@ -7,6 +7,7 @@ debugmodule.initialize = () ->
 
 debugmodule.modulesToDebug = 
     unbreaker: true
-    configmodule: true
+    # configmodule: true
+    unsafeinputpagemodule: true
 
 export default debugmodule
