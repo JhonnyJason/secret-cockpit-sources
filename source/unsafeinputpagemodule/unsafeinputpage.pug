@@ -3,7 +3,9 @@ extends ../slideinframemodule/slideinframe.pug
 block content
     #unsafeinputpage-content        
         h2 Unsafe Secrets Input
-        input#unsafe-secret-input(type="text" value="0xdeadbeefdeadbeefdeadbeefdeadbeef")
+        input#unsafe-secret-input(type="text" value="0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef")
+        h2 Corresponding ID
+        #unsafe-id-line
         #unsafe-input-button-container
             #scan-qr-button.click-button: svg: use(href="#svg-qrscan-icon")
             #create-unsafe-button.click-button: svg: use(href="#svg-add-icon")

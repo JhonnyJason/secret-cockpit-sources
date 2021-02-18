@@ -9,5 +9,6 @@ debugmodule.modulesToDebug =
     unbreaker: true
     # configmodule: true
     unsafeinputpagemodule: true
+    floatinginputpagemodule: true
 
 export default debugmodule

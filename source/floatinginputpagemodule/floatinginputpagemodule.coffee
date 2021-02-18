@@ -11,30 +11,60 @@ print = (arg) -> console.log(arg)
 
 ############################################################
 #region localMOdules
+clientFactory  = require("secret-manager-client")
+
+############################################################
+utl = null
 state = null
+secretStore = null
 slideinModule = null
 
 #endregion
 
 ############################################################
+currentClient = null
+
+############################################################
 floatinginputpagemodule.initialize = () ->
     log "floatinginputpagemodule.initialize"
+    utl = allModules.utilmodule
     state = allModules.statemodule
+    secretStore = allModules.secretstoremodule
     slideinModule = allModules.slideinframemodule
     # floatinginputpageContent.
+    
     slideinModule.wireUp(floatinginputpageContent, clearContent, applyContent)
+    floatingSecretInput.addEventListener("change", secretInputChanged)
     return
 
 ############################################################
 #region internalFunctions
+secretInputChanged = ->
+    log "secretInputChanged"
+    url = state.get("secretManagerURL")
+    seed = floatingSecretInput.value
+    secret = await utl.seedToSecret(seed)
+    try
+        currentClient = await clientFactory.createClient(secret, null, url)
+        key = utl.add0x(currentClient.secretKeyHex)
+        id = utl.add0x(currentClient.publicKeyHex)
+        floatingIdLine.textContent = id
+    catch err then log err
+    return
+
+
+############################################################
 clearContent = ->
     log "clearContent"
     floatingSecretInput.value = ""
+    floatingIdLine.textContent = ""
+    currentClient = null
     return
 
 applyContent = ->
     log "applyContent"
-    # TODO
+    secretStore.storeNewClient(currentClient, "floating")
+    clearContent()
     return
 
 #endregion
