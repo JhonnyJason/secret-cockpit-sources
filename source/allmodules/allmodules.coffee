@@ -6,6 +6,7 @@ import headermodule from "./headermodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
 import secretsdisplaymodule from "./secretsdisplaymodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
+import secretspacepagemodule from "./secretspacepagemodule"
 import secretstoremodule from "./secretstoremodule"
 import settingspagemodule from "./settingspagemodule"
 import signatureinputpagemodule from "./signatureinputpagemodule"
@@ -23,6 +24,7 @@ Modules = {
     inputchoicesectionmodule,
     secretsdisplaymodule,
     secretspacedisplaymodule,
+    secretspacepagemodule,
     secretstoremodule,
     settingspagemodule,
     signatureinputpagemodule,

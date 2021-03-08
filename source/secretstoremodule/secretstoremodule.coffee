@@ -62,5 +62,8 @@ secretstoremodule.removeClient = (client) ->
     state.callOutChange("clientsList")
     return
 
+secretstoremodule.clientByIndex = (index) ->
+    log "secretstoremodule.clientByIndex"
+    return clientsList[index]
 
 module.exports = secretstoremodule

@@ -43,6 +43,18 @@ displayAllKnownClients = ->
         content += mustache.render(elementTemplate, cObj)
 
     if content then clientsDisplayContainer.innerHTML = content
+    
+    clients = clientsDisplayContainer.getElementsByClassName("clients-display")
+    client.addEventListener("click", clientDisplayClicked) for client in clients
     return
+
+############################################################
+clientDisplayClicked = (evt) ->
+    log "clientDisplayClicked"
+    index = parseInt(evt.target.getAttribute("list-index"))
+    state.set("chosenClientIndex", index)
+    allModules.secretspacepagemodule.slideIn()
+    return
+
 
 module.exports = secretsdisplaymodule

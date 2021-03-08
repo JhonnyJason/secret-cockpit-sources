@@ -8,7 +8,9 @@ debugmodule.initialize = () ->
 debugmodule.modulesToDebug = 
     unbreaker: true
     # configmodule: true
-    unsafeinputpagemodule: true
-    floatinginputpagemodule: true
+    # unsafeinputpagemodule: true
+    # floatinginputpagemodule: true
+    secretsdisplaymodule: true
+    secretspacepagemodule: true
 
 export default debugmodule
