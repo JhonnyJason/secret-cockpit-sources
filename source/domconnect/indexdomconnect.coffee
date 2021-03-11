@@ -2,11 +2,13 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.hiddenSecretTemplate = document.getElementById("hidden-secret-template")
     global.secretspacepageContent = document.getElementById("secretspacepage-content")
+    global.secretsContainer = document.getElementById("secrets-container")
+    global.addSecretButton = document.getElementById("add-secret-button")
     global.idLine = document.getElementById("id-line")
     global.secretLine = document.getElementById("secret-line")
     global.typeLine = document.getElementById("type-line")
-    global.secretsContainer = document.getElementById("secrets-container")
     global.signatureinputpageContent = document.getElementById("signatureinputpage-content")
     global.signatureSecretInput = document.getElementById("signature-secret-input")
     global.floatinginputpageContent = document.getElementById("floatinginputpage-content")

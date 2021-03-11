@@ -1,3 +1,33 @@
 // secretspacepage styles
-#secretspacepage
-    background-color rgba(0, 0, 0, 0.2)
+secret-button-size = 23px
+
+#secretspacepage-content
+    overflow-y: auto
+    box-sizing border-box
+
+#secrets-container
+    border-top: solid 2px cd-foreground
+    padding 20px 10px
+    margin-top 15px 
+    .edit-secret-button
+        svg
+            width: secret-button-size
+            height: secret-button-size
+    .delete-secret-button
+        svg
+            width: secret-button-size
+            height: secret-button-size
+
+#add-secret-button-line
+    overflow hidden
+    padding-bottom: 20px
+    border-bottom: solid 2px cd-foreground
+
+#add-secret-button
+    svg
+        height secret-button-size
+        width secret-button-size
+        
+
+#hidden-secret-template
+    display none

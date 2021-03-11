@@ -12,6 +12,7 @@ print = (arg) -> console.log(arg)
 ############################################################
 #region localModules
 clientFactory  = require("secret-manager-client")
+mustache = require("mustache")
 
 ############################################################
 utl = null
@@ -21,7 +22,15 @@ slideinModule = null
 
 #endregion
 
+############################################################
+#region internal Properties
 clientObject = null
+
+############################################################
+template = null
+emptyContainerElement = "<p>No Secrets in this Space :-)</p>"
+
+#endregion
 
 ############################################################
 secretspacepagemodule.initialize = ->
@@ -30,13 +39,36 @@ secretspacepagemodule.initialize = ->
     state = allModules.statemodule
     secretStore = allModules.secretstoremodule
     slideinModule = allModules.slideinframemodule
+
+    template = hiddenSecretTemplate.innerHTML
+
     # secretspacepageContent.
     slideinModule.wireUp(secretspacepageContent, clearContent, applyContent)
-
+    
+    addSecretButton.addEventListener("click", addSecretButtonClicked)
     return
 
 ############################################################
 #region internalFunctions
+addSecretButtonClicked = ->
+    log "addSecretButtonClicked"
+    return
+
+editSecretButtonClicked = (evt) ->
+    log "editSecretButtonClicked"
+    label = evt.target.getAttribute("secret-label")
+    log label
+    return
+
+deleteSecretButtonClicked = (evt) ->
+    log "deleteSecretButtonClicked"
+    label = evt.target.getAttribute("secret-label")
+    log label
+    return
+
+getLabel = (el) ->
+    parent = el.getParentNode()
+############################################################
 displayClientInformation = ->
     log "displayClientInformation"
     idLine.textContent = utl.add0x(clientObject.client.publicKeyHex)
@@ -47,8 +79,26 @@ displayClientInformation = ->
 displayCurrentSecretSpace = ->
     log "displayCurrentSecretSpace"
     space = await clientObject.client.getSecretSpace()
-    olog space
+    # olog space
+    secrets = Object.keys(space)
+
+    cObj = {}
+    content = ""
+    for secret in secrets when space[secret].secret?
+        cObj.label = secret
+        content += mustache.render(template, cObj)
+
+    if content then secretsContainer.innerHTML = content
+    else secretsContainer.innerHTML = emptyContainerElement
+
+    editButtons = secretsContainer.getElementsByClassName("edit-secret-button")
+    btn.addEventListener("click", deleteSecretButtonClicked) for btn in editButtons
+    deleteButtons = secretsContainer.getElementsByClassName("delete-secret-button")
+    btn.addEventListener("click", editSecretButtonClicked) for btn in deleteButtons
+
     return
+
+
 
 ############################################################
 clearContent = ->
@@ -87,6 +137,9 @@ secretspacepagemodule.slideIn = ->
 
     
 module.exports = secretspacepagemodule
+
+# 0xe1400aa698ca52b67510a0b7a22daef4bac99807b511cd2508689064154b5c29
+# id: 0x43b9a9eea29d7fe5efaba10b45651afb41f3fee540cd4ed18ef5b5311483c4ca
 
 # 0x1753ee5973aab738cf12ca504dc29cf8d13376591264417b69752f02c7467d3c
 # id: 0x5a23be423d7d7bd62b6217823c9399f2a15771bbc84f3e871b5bbbe7a9d56478

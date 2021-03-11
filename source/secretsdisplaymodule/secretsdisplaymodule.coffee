@@ -17,14 +17,15 @@ state = null
 utl = null
 
 ############################################################
-elementTemplate = "null"
+template = null
+emptyContainerElement ="<p>No Known Secret here :-)</p>"
 
 ############################################################
 secretsdisplaymodule.initialize = ->
     log "secretsdisplaymodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    elementTemplate = hiddenClientsDisplayTemplate.innerHTML
+    template = hiddenClientsDisplayTemplate.innerHTML
 
     state.addOnChangeListener("clientsList", displayAllKnownClients)
     return
@@ -40,10 +41,11 @@ displayAllKnownClients = ->
         cObj.index = i
         cObj.type = obj.type
         cObj.id = utl.add0x(obj.client.publicKeyHex)        
-        content += mustache.render(elementTemplate, cObj)
+        content += mustache.render(template, cObj)
 
     if content then clientsDisplayContainer.innerHTML = content
-    
+    else clientsDisplayContainer.innerHTML = emptyContainerElement
+
     clients = clientsDisplayContainer.getElementsByClassName("clients-display")
     client.addEventListener("click", clientDisplayClicked) for client in clients
     return
