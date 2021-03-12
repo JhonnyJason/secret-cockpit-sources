@@ -28,6 +28,7 @@ editsecretpopupmodule.initialize = ->
     popupModule.wireUp(editsecretPopup, applyEdit)
     return
     
+############################################################
 applyEdit = ->
     log "applyEdit"
     newLabel = editLabelLine.textContent
@@ -35,7 +36,7 @@ applyEdit = ->
     if newLabel != currentLabel then currentClient.deleteSecret(currentLabel)
 
     newSecret = editSecretLine.textContent
-    if newSecret != currentSecret then currentClient.setSecret(newLabel, newSecret)
+    if newSecret != currentSecret then await currentClient.setSecret(newLabel, newSecret)
     secretSpacePage.slideIn()
     return
 

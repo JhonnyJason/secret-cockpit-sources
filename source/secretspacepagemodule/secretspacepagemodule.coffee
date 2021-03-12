@@ -61,6 +61,7 @@ secretspacepagemodule.initialize = ->
 #region internalFunctions
 addSecretButtonClicked = ->
     log "addSecretButtonClicked"
+    addPopup.addSecret(clientObject.client)
     return
 
 editSecretButtonClicked = (evt) ->
@@ -71,8 +72,8 @@ editSecretButtonClicked = (evt) ->
 
 deleteSecretButtonClicked = (evt) ->
     log "deleteSecretButtonClicked"
-    label = evt.target.getAttribute("secret-label")
-    log label
+    label = getLabel(evt.target)
+    deletePopup.deleteSecret(clientObject.client, label)
     return
 
 getLabel = (el) ->

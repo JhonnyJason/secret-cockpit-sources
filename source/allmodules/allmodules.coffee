@@ -1,5 +1,7 @@
+import addsecretpopupmodule from "./addsecretpopupmodule"
 import configmodule from "./configmodule"
 import debugmodule from "./debugmodule"
+import deletesecretpopupmodule from "./deletesecretpopupmodule"
 import editsecretpopupmodule from "./editsecretpopupmodule"
 import floatinginputpagemodule from "./floatinginputpagemodule"
 import footermodule from "./footermodule"
@@ -18,8 +20,10 @@ import unsafeinputpagemodule from "./unsafeinputpagemodule"
 import utilmodule from "./utilmodule"
 
 Modules = {
+    addsecretpopupmodule,
     configmodule,
     debugmodule,
+    deletesecretpopupmodule,
     editsecretpopupmodule,
     floatinginputpagemodule,
     footermodule,
