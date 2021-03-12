@@ -8,6 +8,7 @@ debugmodule.initialize = () ->
 debugmodule.modulesToDebug = 
     unbreaker: true
     # configmodule: true
+    editsecretpopupmodule: true
     # unsafeinputpagemodule: true
     # floatinginputpagemodule: true
     secretsdisplaymodule: true

@@ -1,0 +1,59 @@
+// popup styles
+cancel-button-size = 33px
+.popupframe
+    position absolute
+    top 0
+    left 0
+    z-index:  199
+    height 100vh
+    width 100%
+    transform: translateY(-102%)
+
+.popupframe.active
+    transform: translateY(0)
+
+
+.click-catcher
+    position absolute
+    height 100vh
+    width 100%
+    background-color alpha(white, 0.3)
+    
+.popup
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    width 90%
+    max-height 500px
+    background-color cd-background
+    border-radius: 7px
+    padding 37px 20px 50px 20px
+    box-sizing: border-box
+
+.popup-cancel-button
+    position: absolute
+    top 0
+    right 0
+    // transform: translate(40%, -40%)
+    height cancel-button-size
+    width: cancel-button-size
+    background-color cd-background
+    border-radius: 7px
+    svg
+        height cancel-button-size
+        width: cancel-button-size
+
+.popup-accept-button
+    position: absolute
+    bottom 5px
+    right 5px
+    // transform: translate(40%, 40%)
+    // transform: translate(-10%, -10%)
+    // background-color element-background
+    border-radius: 7px
+    border solid 2px cd-foreground
+    .click-button
+        padding 10px
+        text-transform: uppercase
+

@@ -20,6 +20,11 @@ state = null
 secretStore = null
 slideinModule = null
 
+############################################################
+editPopup = null
+addPopup = null
+deletePopup = null
+
 #endregion
 
 ############################################################
@@ -40,6 +45,10 @@ secretspacepagemodule.initialize = ->
     secretStore = allModules.secretstoremodule
     slideinModule = allModules.slideinframemodule
 
+    editPopup = allModules.editsecretpopupmodule
+    addPopup = allModules.addsecretpopupmodule
+    deletePopup = allModules.deletesecretpopupmodule
+
     template = hiddenSecretTemplate.innerHTML
 
     # secretspacepageContent.
@@ -56,8 +65,8 @@ addSecretButtonClicked = ->
 
 editSecretButtonClicked = (evt) ->
     log "editSecretButtonClicked"
-    label = evt.target.getAttribute("secret-label")
-    log label
+    label = getLabel(evt.target)
+    editPopup.editSecret(clientObject.client, label)
     return
 
 deleteSecretButtonClicked = (evt) ->
@@ -67,7 +76,8 @@ deleteSecretButtonClicked = (evt) ->
     return
 
 getLabel = (el) ->
-    parent = el.getParentNode()
+    return el.parentElement.parentElement.getAttribute("secret-label")
+
 ############################################################
 displayClientInformation = ->
     log "displayClientInformation"
@@ -92,9 +102,9 @@ displayCurrentSecretSpace = ->
     else secretsContainer.innerHTML = emptyContainerElement
 
     editButtons = secretsContainer.getElementsByClassName("edit-secret-button")
-    btn.addEventListener("click", deleteSecretButtonClicked) for btn in editButtons
+    btn.addEventListener("click", editSecretButtonClicked) for btn in editButtons
     deleteButtons = secretsContainer.getElementsByClassName("delete-secret-button")
-    btn.addEventListener("click", editSecretButtonClicked) for btn in deleteButtons
+    btn.addEventListener("click", deleteSecretButtonClicked) for btn in deleteButtons
 
     return
 

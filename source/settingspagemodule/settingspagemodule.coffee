@@ -10,7 +10,7 @@ print = (arg) -> console.log(arg)
 #endregion
 
 ############################################################
-#region localMOdules
+#region localModules
 state = null
 slideinModule = null
 
