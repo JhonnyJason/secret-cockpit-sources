@@ -15,7 +15,7 @@ secretSpacePage = null
 
 ############################################################
 currentClient = null
-currentLabel = null
+currentSecretId = null
 currentSecret = null
 
 ############################################################
@@ -31,24 +31,24 @@ editsecretpopupmodule.initialize = ->
 ############################################################
 applyEdit = ->
     log "applyEdit"
-    newLabel = editLabelLine.textContent
-    if !newLabel then return
-    if newLabel != currentLabel then currentClient.deleteSecret(currentLabel)
+    newSecretId = editSecretIdLine.textContent
+    if !newSecretId then return
+    if newSecretId != currentSecretId then currentClient.deleteSecret(currentSecretId)
 
     newSecret = editSecretLine.textContent
-    if newSecret != currentSecret then await currentClient.setSecret(newLabel, newSecret)
+    if newSecret != currentSecret then await currentClient.setSecret(newSecretId, newSecret)
     secretSpacePage.slideIn()
     return
 
 
 ############################################################
-editsecretpopupmodule.editSecret = (client, label) ->
+editsecretpopupmodule.editSecret = (client, secretId) ->
     log "editsecretpopupmodule.editSecret"
-    currentSecret = await client.getSecret(label)
+    currentSecret = await client.getSecret(secretId)
     currentClient = client
-    currentLabel = label
+    currentSecretId = secretId
 
-    editLabelLine.textContent = label
+    editSecretIdLine.textContent = secretId
     editSecretLine.textContent = currentSecret
     popupModule.popupForContentElement(editsecretPopup)
     return

@@ -66,18 +66,18 @@ addSecretButtonClicked = ->
 
 editSecretButtonClicked = (evt) ->
     log "editSecretButtonClicked"
-    label = getLabel(evt.target)
-    editPopup.editSecret(clientObject.client, label)
+    secretId = getSecretId(evt.target)
+    editPopup.editSecret(clientObject.client, secretId)
     return
 
 deleteSecretButtonClicked = (evt) ->
     log "deleteSecretButtonClicked"
-    label = getLabel(evt.target)
-    deletePopup.deleteSecret(clientObject.client, label)
+    secretId = getSecretId(evt.target)
+    deletePopup.deleteSecret(clientObject.client, secretId)
     return
 
-getLabel = (el) ->
-    return el.parentElement.parentElement.getAttribute("secret-label")
+getSecretId = (el) ->
+    return el.parentElement.parentElement.getAttribute("secret-id")
 
 ############################################################
 displayClientInformation = ->
@@ -91,12 +91,12 @@ displayCurrentSecretSpace = ->
     log "displayCurrentSecretSpace"
     space = await clientObject.client.getSecretSpace()
     # olog space
-    secrets = Object.keys(space)
+    secretIds = Object.keys(space)
 
     cObj = {}
     content = ""
-    for secret in secrets when space[secret].secret?
-        cObj.label = secret
+    for id in secretIds when space[id].secret?
+        cObj.secretId = id
         content += mustache.render(template, cObj)
 
     if content then secretsContainer.innerHTML = content

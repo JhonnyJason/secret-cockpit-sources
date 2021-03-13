@@ -29,11 +29,11 @@ addsecretpopupmodule.initialize = ->
 ############################################################
 applyAdd = ->
     log "applyAdd"
-    label = addLabelLine.textContent
-    if !label then return
+    secretId = addSecretIdLine.textContent
+    if !secretId then return
     secret = addSecretLine.textContent
 
-    await currentClient.setSecret(label, secret)
+    await currentClient.setSecret(secretId, secret)
     secretSpacePage.slideIn()
     return
 
@@ -42,8 +42,8 @@ addsecretpopupmodule.addSecret = (client) ->
     log "addsecretpopupmodule.addSecret"
     currentClient = client
 
-    editLabelLine.textContent = ""
-    editSecretLine.textContent = ""
+    addSecretIdLine.textContent = ""
+    addSecretLine.textContent = ""
     popupModule.popupForContentElement(addsecretPopup)
     return
 

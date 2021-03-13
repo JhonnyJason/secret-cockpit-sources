@@ -15,7 +15,7 @@ secretSpacePage = null
 
 ############################################################
 currentClient = null
-currentLabel = null
+currentSecretId = null
 
 ############################################################
 deletesecretpopupmodule.initialize = () ->
@@ -30,18 +30,18 @@ deletesecretpopupmodule.initialize = () ->
 ############################################################
 applyDeletion = ->
     log "applyDeletion"
-    await currentClient.deleteSecret(currentLabel)
+    await currentClient.deleteSecret(currentSecretId)
     secretSpacePage.slideIn()
     return
 
 ############################################################
-deletesecretpopupmodule.deleteSecret = (client, label) ->
+deletesecretpopupmodule.deleteSecret = (client, secretId) ->
     log "deletesecretpopupmodule.addSecret"
     currentClient = client
-    currentLabel = label
+    currentSecretId = secretId
 
-    deleteLabelLine.textContent = label
-    deleteSecretLine.textContent = await client.getSecret(label)
+    deleteSecretIdLine.textContent = secretId
+    deleteSecretLine.textContent = await client.getSecret(secretId)
     popupModule.popupForContentElement(deletesecretPopup)
     return
 
