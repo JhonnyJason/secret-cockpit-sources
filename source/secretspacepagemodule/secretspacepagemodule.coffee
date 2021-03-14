@@ -83,8 +83,10 @@ getSecretId = (el) ->
 displayClientInformation = ->
     log "displayClientInformation"
     idLine.textContent = utl.add0x(clientObject.client.publicKeyHex)
-    secretLine.textContent = utl.add0x(clientObject.client.secretKeyHex)
-    typeLine.textContent = clientObject.type
+    secretKeyHandleLine.className = clientObject.type
+    if clientObject.type == "unsafe" 
+        secretKeyLine.textContent = utl.add0x(clientObject.client.secretKeyHex)
+    else secretKeyLine.textContent = ""
     return
 
 displayCurrentSecretSpace = ->

@@ -1,33 +1,138 @@
 // secretspacepage styles
-secret-button-size = 23px
+secret-button-size = 20px
+add-secret-button-size = 30px
+handle-button-size = 25px
 
-#secretspacepage-content
-    overflow-y: auto
-    box-sizing border-box
+handle-type-icon-size = 50px
 
-#secrets-container
-    border-top: solid 2px cd-foreground
-    padding 20px 10px
-    margin-top 15px 
-    .edit-secret-button
-        svg
-            width: secret-button-size
-            height: secret-button-size
-    .delete-secret-button
-        svg
-            width: secret-button-size
-            height: secret-button-size
-
-#add-secret-button-line
-    overflow hidden
-    padding-bottom: 20px
-    border-bottom: solid 2px cd-foreground
-
-#add-secret-button
-    svg
-        height secret-button-size
-        width secret-button-size
-        
+top-bottom-container-padding = 50px
+elements-distance = 10px
+elements-to-add-button-gap = 21px
+elements-side-paddings = 10px
 
 #hidden-secret-template
     display none
+
+#secretspacepage-content
+    overflow: hidden
+    box-sizing border-box
+    // all svgs are buttons
+
+#secrets-container
+    border-top: solid 2px cd-foreground
+    padding top-bottom-container-padding elements-side-paddings elements-to-add-button-gap elements-side-paddings
+    margin-top 15px
+
+    svg
+        width: secret-button-size
+        height: secret-button-size
+
+    .secret
+        background-color cd-background
+        border 2px solid cd-foreground
+        margin-bottom 7px
+        border-radius: 7px
+
+    .secret-id
+        overflow hidden
+        text-overflow: ellipsis
+
+    .secret-button-line
+        display flex
+        justify-content: space-around
+        max-width 260px
+        margin auto
+
+    .click-button
+        padding 7px
+    // .edit-secret-button
+    // .delete-secret-button
+    // .copy-secret-button
+    // .share-secret-button
+    // .forward-secret-button
+
+
+#add-secret-button-line
+    overflow hidden
+    display flex
+    justify-content: space-around
+    padding-bottom: top-bottom-container-padding
+    max-width 120px
+    margin auto
+    svg
+        width: add-secret-button-size
+        height: add-secret-button-size
+// #add-secret-button
+// #share-new-secret-button.click-button
+
+
+#secretspacepage-details
+    border-top: solid 2px cd-foreground
+    padding 10px 10px 50px 10px
+
+#id-section,
+#secret-key-section
+    background-color: cd-background
+    padding 12px
+
+#id-line,
+#secret-key-line
+    padding-bottom 12px
+    overflow hidden
+    text-overflow: ellipsis
+
+#id-handle-line,
+#secret-key-handle-line
+    display flex
+    max-width 320px
+    justify-content: space-around
+    align-items: center
+    margin auto
+    .click-button
+        padding 7px
+        svg
+            width: handle-button-size
+            height: handle-button-size
+
+#copy-id-button
+    margin-left auto
+
+#secret-key-handle-type-display
+    margin-right auto
+    svg
+        width handle-type-icon-size
+        height: handle-type-icon-size
+        margin-bottom 5px
+
+#secret-key-handle-unsafe-icon,
+#secret-key-handle-floating-icon,
+#secret-key-handle-signature-icon,
+#secret-key-handle-unsafe-label,
+#secret-key-handle-floating-label,
+#secret-key-handle-signature-label
+    display none
+
+#qr-for-secret-key-button.click-button,
+#copy-secret-key-button.click-button
+    display none
+
+.unsafe
+    #secret-key-handle-unsafe-icon
+        display block
+    #secret-key-handle-unsafe-label
+        display block
+    #qr-for-secret-key-button.click-button,
+    #copy-secret-key-button.click-button
+        display block
+
+.floating
+    #secret-key-handle-floating-icon
+        display block
+    #secret-key-handle-floating-label
+        display block
+
+.signature
+    #secret-key-handle-signature-icon
+        display block
+    #secret-key-handle-signature-label
+        display block

@@ -1,4 +1,5 @@
 import addsecretpopupmodule from "./addsecretpopupmodule"
+import appcoremodule from "./appcoremodule"
 import configmodule from "./configmodule"
 import debugmodule from "./debugmodule"
 import deletesecretpopupmodule from "./deletesecretpopupmodule"
@@ -21,6 +22,7 @@ import utilmodule from "./utilmodule"
 
 Modules = {
     addsecretpopupmodule,
+    appcoremodule,
     configmodule,
     debugmodule,
     deletesecretpopupmodule,
