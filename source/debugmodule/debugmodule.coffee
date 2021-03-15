@@ -13,5 +13,6 @@ debugmodule.modulesToDebug =
     # floatinginputpagemodule: true
     secretsdisplaymodule: true
     secretspacepagemodule: true
-
+    subspacepagemodule: true
+    
 export default debugmodule

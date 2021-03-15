@@ -12,6 +12,8 @@ elements-side-paddings = 10px
 
 #hidden-secret-template
     display none
+#hidden-subspace-template
+    display none
 
 #secretspacepage-content
     overflow: hidden
@@ -23,15 +25,16 @@ elements-side-paddings = 10px
     padding top-bottom-container-padding elements-side-paddings elements-to-add-button-gap elements-side-paddings
     margin-top 15px
 
+.secret
+    background-color alpha(cd-background, 0.8)
+    border 2px solid cd-foreground
+    margin-bottom 7px
+    border-radius: 7px
     svg
         width: secret-button-size
         height: secret-button-size
-
-    .secret
-        background-color cd-background
-        border 2px solid cd-foreground
-        margin-bottom 7px
-        border-radius: 7px
+    .click-button
+        padding 7px
 
     .secret-id
         overflow hidden
@@ -43,8 +46,6 @@ elements-side-paddings = 10px
         max-width 260px
         margin auto
 
-    .click-button
-        padding 7px
     // .edit-secret-button
     // .delete-secret-button
     // .copy-secret-button
@@ -66,13 +67,54 @@ elements-side-paddings = 10px
 // #share-new-secret-button.click-button
 
 
+
+#foreign-subspaces
+    border-top: solid 2px cd-foreground
+    .subspace
+        display flex
+        align-items: center
+        justify-content: space-between
+        margin-bottom 7px
+        svg
+            width: handle-button-size
+            height: handle-button-size
+
+    .subspace-id
+        background-color alpha(cd-background, 0.8)
+        border 2px solid cd-foreground
+        border-right none
+        border-radius: 7px 0 0 7px
+        width "calc(100% - %s)" % 60px
+        box-sizing: border-box
+        overflow hidden
+        text-overflow: ellipsis
+    .click-button
+        padding 12px
+                
+#subspaces-container
+    padding top-bottom-container-padding elements-side-paddings elements-to-add-button-gap elements-side-paddings
+
+#add-subspace-button-line
+    overflow hidden
+    display flex
+    justify-content: space-around
+    padding-bottom: top-bottom-container-padding
+    max-width 120px
+    margin auto
+    svg
+        width: add-secret-button-size
+        height: add-secret-button-size
+
+
+
+
 #secretspacepage-details
     border-top: solid 2px cd-foreground
     padding 10px 10px 50px 10px
 
 #id-section,
 #secret-key-section
-    background-color: cd-background
+    background-color: alpha(cd-background, 0.8)
     padding 12px
 
 #id-line,

@@ -1,0 +1,24 @@
+//- subspacepage structure
+extends ../slideinframemodule/slideinframe.pug
+block content
+    #subspacepage-content        
+        h1 Foreign Subspace
+
+        #shared-secrets-container
+
+        #subspace-from-details
+            h2 Shared From
+            #shared-from-id-section
+                #shared-from-id-line
+                #shared-from-id-handle-line
+                    #copy-shared-from-id-button.click-button: svg: use(href="#svg-copy-icon")
+                    #qr-for-shared-from-id-button.click-button: svg: use(href="#svg-qrcode-icon")
+
+        #subspacepage-to-details
+            h2 Shared To
+            #shared-to-id-section
+                #shared-to-id-line
+                #shared-to-id-handle-line
+                    #copy-shared-to-id-button.click-button: svg: use(href="#svg-copy-icon")
+                    #qr-for-shared-to-id-button.click-button: svg: use(href="#svg-qrcode-icon")
+                
