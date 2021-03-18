@@ -1,8 +1,10 @@
 import addsecretpopupmodule from "./addsecretpopupmodule"
+import addsubspacepopupmodule from "./addsubspacepopupmodule"
 import appcoremodule from "./appcoremodule"
 import configmodule from "./configmodule"
 import debugmodule from "./debugmodule"
 import deletesecretpopupmodule from "./deletesecretpopupmodule"
+import deletesubspacepopupmodule from "./deletesubspacepopupmodule"
 import editsecretpopupmodule from "./editsecretpopupmodule"
 import floatinginputpagemodule from "./floatinginputpagemodule"
 import footermodule from "./footermodule"
@@ -23,10 +25,12 @@ import utilmodule from "./utilmodule"
 
 Modules = {
     addsecretpopupmodule,
+    addsubspacepopupmodule,
     appcoremodule,
     configmodule,
     debugmodule,
     deletesecretpopupmodule,
+    deletesubspacepopupmodule,
     editsecretpopupmodule,
     floatinginputpagemodule,
     footermodule,

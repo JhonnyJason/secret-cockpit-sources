@@ -7,12 +7,13 @@ debugmodule.initialize = () ->
 
 debugmodule.modulesToDebug = 
     unbreaker: true
+    addsubspacepopupmodule: true
     # configmodule: true
-    editsecretpopupmodule: true
+    # editsecretpopupmodule: true
     # unsafeinputpagemodule: true
     # floatinginputpagemodule: true
     secretsdisplaymodule: true
     secretspacepagemodule: true
     subspacepagemodule: true
-    
+
 export default debugmodule

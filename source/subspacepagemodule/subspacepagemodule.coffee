@@ -66,28 +66,29 @@ subspacepagemodule.initialize = ->
 ############################################################
 #region internalFunctions
 getSecretId = (el) ->
-    id = el.parentElement.parentElement.getAttribute("secret-id")
-    fromId = state.get("chosenSubspaceId")
-    return fromId + "." + secretId
+    return el.parentElement.parentElement.getAttribute("secret-id")
 
 ############################################################
 #region secretsEvents
-deleteSecretButtonClicked = (evt) ->
-    log "deleteSecretButtonClicked"
-    secretId = getSecretId(evt.target)
-    deletePopup.deleteSecret(clientObject.client, secretId)
-    return
+# deleteSecretButtonClicked = (evt) ->
+#     log "deleteSecretButtonClicked"
+#     secretId = getSecretId(evt.target)
+#     deletePopup.deleteSecret(clientObject.client, secretId)
+#     return
 
-editSecretButtonClicked = (evt) ->
-    log "editSecretButtonClicked"
-    secretId = getSecretId(evt.target)
-    editPopup.editSecret(clientObject.client, secretId)
-    return
+# editSecretButtonClicked = (evt) ->
+#     log "editSecretButtonClicked"
+#     secretId = getSecretId(evt.target)
+#     editPopup.editSecret(clientObject.client, secretId)
+#     return
 
 
 copySecretButtonClicked = (evt) ->
     log "copySecretButtonClicked"
-    #TODO
+    setterId = state.get("chosenSubspaceId")
+    secretId = getSecretId(evt.target)
+    secret = await clientObject.client.getSecretFrom(secretId, setterId)
+    utl.copyToClipboard(secret)
     return
 
 storeSecretButtonClicked = (evt) ->
@@ -107,7 +108,8 @@ shareSecretButtonClicked = (evt) ->
 #region detailSectionEvents
 copySharedFromIdButtonClicked = ->
     log "copySharedFromIdButtonClicked"
-    ##TODO
+    id = state.get("chosenSubspaceId")
+    utl.copyToClipboard(id)
     return
 
 qrForSharedFromIdButtonClicked = ->
@@ -118,7 +120,8 @@ qrForSharedFromIdButtonClicked = ->
 ############################################################
 copySharedToIdButtonClicked = ->
     log "copySharedToIdButtonClicked"
-    ##TODO
+    id = clientObject.client.publicKeyHex
+    utl.copyToClipboard(id)
     return
 
 qrForSharedToIdButtonClicked = ->
@@ -150,12 +153,6 @@ displayCurrentSubspace = ->
 
     if content then sharedSecretsContainer.innerHTML = content
     else sharedSecretsContainer.innerHTML = noSecretElement
-
-    editButtons = sharedSecretsContainer.getElementsByClassName("edit-secret-button")
-    btn.addEventListener("click", editSecretButtonClicked) for btn in editButtons
-
-    deleteButtons = sharedSecretsContainer.getElementsByClassName("delete-secret-button")
-    btn.addEventListener("click", deleteSecretButtonClicked) for btn in deleteButtons
     
     copyButtons = sharedSecretsContainer.getElementsByClassName("copy-secret-button")
     btn.addEventListener("click", copySecretButtonClicked) for btn in copyButtons

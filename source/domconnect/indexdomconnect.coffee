@@ -2,6 +2,10 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.deletesubspacePopup = document.getElementById("deletesubspace-popup")
+    global.deletesubspaceId = document.getElementById("deletesubspace-id")
+    global.addsubspacePopup = document.getElementById("addsubspace-popup")
+    global.addsubspaceId = document.getElementById("addsubspace-id")
     global.deletesecretPopup = document.getElementById("deletesecret-popup")
     global.deleteSecretIdLine = document.getElementById("delete-secret-id-line")
     global.deleteSecretLine = document.getElementById("delete-secret-line")

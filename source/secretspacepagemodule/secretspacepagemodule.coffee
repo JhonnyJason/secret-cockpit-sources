@@ -27,7 +27,8 @@ subspacePage = null
 editPopup = null
 addPopup = null
 deletePopup = null
-
+addSubspacePopup = null
+deleteSubspacePopup = null
 #endregion
 
 ############################################################
@@ -56,6 +57,8 @@ secretspacepagemodule.initialize = ->
     editPopup = allModules.editsecretpopupmodule
     addPopup = allModules.addsecretpopupmodule
     deletePopup = allModules.deletesecretpopupmodule
+    addSubspacePopup = allModules.addsubspacepopupmodule
+    deleteSubspacePopup = allModules.deletesubspacepopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
     subspaceTemplate = hiddenSubspaceTemplate.innerHTML
@@ -100,7 +103,9 @@ editSecretButtonClicked = (evt) ->
 
 copySecretButtonClicked = (evt) ->
     log "copySecretButtonClicked"
-    #TODO
+    secretId = getSecretId(evt.target)
+    secret = await clientObject.client.getSecret(secretId)
+    utl.copyToClipboard(secret)
     return
 
 storeSecretButtonClicked = (evt) ->
@@ -136,12 +141,13 @@ subspaceClicked = (evt) ->
 
 deleteSubspaceButtonClicked = (evt) ->
     log "deleteSubspaceButtonClicked"
-    ## TODO
+    id = getSubspaceId(evt.target)
+    deleteSubspacePopup.deleteSubspace(clientObject.client, id)
     return
 
 addSubspaceButtonClicked = ->
     log "addSubspaceButtonClicked"
-    ##TODO
+    addSubspacePopup.addSubspace(clientObject.client)
     return
 
 #endregion
@@ -150,7 +156,7 @@ addSubspaceButtonClicked = ->
 #region detailSectionEvents
 copyIdButtonClicked = ->
     log "copyIdButtonClicked"
-    ##TODO
+    utl.copyToClipboard(clientObject.client.publicKeyHex)
     return
 
 qrForIdButtonClicked = ->
@@ -160,7 +166,7 @@ qrForIdButtonClicked = ->
 
 copySecretKeyButtonClicked = ->
     log "copySecretKeyButtonClicked"
-    ##TODO
+    utl.copyToClipboard(clientObject.client.secretKeyHex)
     return
 
 qrForSecretKeyButtonClicked = ->
@@ -174,7 +180,6 @@ storeSecretKeyButtonClicked = ->
     return
 
 #endregion
-
 
 ############################################################
 #region displayFunctions
