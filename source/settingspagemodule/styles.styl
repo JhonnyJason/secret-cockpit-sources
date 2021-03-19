@@ -3,9 +3,31 @@ picture-size = 90px
 
 copy-icon-size = 15px
 
+checkbox-size = 15px
+
 #settingspage-content
-    input
-        margin-top: 0
-        width: 30px
     h2
-        margin-top: 5px        
+        margin-top: 9px
+        margin-bottom 4px        
+
+    input[type='checkbox']
+        appearance: none;
+        outline:none;
+        padding 0
+        margin: 0
+        width:checkbox-size
+        height:checkbox-size
+        background-color cd-background
+        border solid 2px cd-foreground 
+        transition: .3s
+        cursor: pointer
+        vertical-align: middle
+
+    input[type='checkbox']:checked
+        background: cd-foreground 
+
+    label
+        font-size: 12pt
+        margin-left 30px
+        margin-right 5px
+        vertical-align: middle

@@ -2,7 +2,27 @@
 extends ../slideinframemodule/slideinframe.pug
 block content
     #settingspage-content        
+        h1 Settings
         h2 Secret Manager Service
         input#secret-manager-input(type="text")
-        h2 Keylogger Protection
+        h2 Data Manager Service 
+        input#data-manager-input(type="text")
+        h2 Secret Types to Store Unsafe Secrets
+        label(for="allow-unsafe-input") Store in Unsafe Secrets
+        input#store-in-unsafe-input(type="checkbox" value="protected")
+        label(for="allow-unsafe-input") Store in Floating Secrets
+        input#store-in-floating-input(type="checkbox" value="protected")
+        label(for="allow-unsafe-input") Store in Signature Secrets
+        input#store-in-signature-input(type="checkbox" value="protected")
+        h2 Floating Secret - Keylogger Protection
+        label(for="keylogger-protection-input") Protect
         input#keylogger-protection-input(type="checkbox" value="protected")
+        h2 Store Unsafe Secrets in Local Storage
+        label(for="store-unsafe-input") Store
+        input#store-unsafe-input(type="checkbox" value="protected")
+        h2 Autodetect Unsafe Secrets
+        label(for="autodetect-unsafe-input") Autodetect
+        input#autodetect-unsafe-input(type="checkbox" value="protected")
+        h2 Secret Identifying Ending
+        input#identifying-ending-input(type="text")
+        
