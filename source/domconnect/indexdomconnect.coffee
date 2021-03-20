@@ -2,6 +2,10 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.storesecretPopup = document.getElementById("storesecret-popup")
+    global.storesecretIdLine = document.getElementById("storesecret-id-line")
+    global.storesecretAsLine = document.getElementById("storesecret-as-line")
+    global.storesecretOptionsContainer = document.getElementById("storesecret-options-container")
     global.deletesubspacePopup = document.getElementById("deletesubspace-popup")
     global.deletesubspaceId = document.getElementById("deletesubspace-id")
     global.addsubspacePopup = document.getElementById("addsubspace-popup")

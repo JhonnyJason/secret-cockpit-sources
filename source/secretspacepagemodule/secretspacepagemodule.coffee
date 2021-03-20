@@ -29,6 +29,9 @@ addPopup = null
 deletePopup = null
 addSubspacePopup = null
 deleteSubspacePopup = null
+
+storePopup = null
+sharePopup = null
 #endregion
 
 ############################################################
@@ -59,6 +62,8 @@ secretspacepagemodule.initialize = ->
     deletePopup = allModules.deletesecretpopupmodule
     addSubspacePopup = allModules.addsubspacepopupmodule
     deleteSubspacePopup = allModules.deletesubspacepopupmodule
+    storePopup = allModules.storesecretpopupmodule
+    sharePopup = allModules.sharesecretpopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
     subspaceTemplate = hiddenSubspaceTemplate.innerHTML
@@ -110,12 +115,14 @@ copySecretButtonClicked = (evt) ->
 
 storeSecretButtonClicked = (evt) ->
     log "storeSecretButtonClicked"
-    #TODO
+    id = getSecretId(evt.target)
+    storePopup.storeSecret(clientObject.client, id)
     return
 
 shareSecretButtonClicked = (evt) ->
     log "shareSecretButtonClicked"
-    #TODO
+    id = getSecretId(evt.target)
+    # sharePopup.shareSecret(clientObject.client, id)
     return
 
 addSecretButtonClicked = ->

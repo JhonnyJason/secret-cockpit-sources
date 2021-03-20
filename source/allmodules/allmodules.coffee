@@ -19,6 +19,7 @@ import settingspagemodule from "./settingspagemodule"
 import signatureinputpagemodule from "./signatureinputpagemodule"
 import slideinframemodule from "./slideinframemodule"
 import statemodule from "./statemodule"
+import storesecretpopupmodule from "./storesecretpopupmodule"
 import subspacepagemodule from "./subspacepagemodule"
 import unsafeinputpagemodule from "./unsafeinputpagemodule"
 import utilmodule from "./utilmodule"
@@ -45,6 +46,7 @@ Modules = {
     signatureinputpagemodule,
     slideinframemodule,
     statemodule,
+    storesecretpopupmodule,
     subspacepagemodule,
     unsafeinputpagemodule,
     utilmodule,
