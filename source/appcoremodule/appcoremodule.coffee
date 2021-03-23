@@ -20,7 +20,7 @@ secretStore = null
 appcoremodule.initialize = ->
     log "appcoremodule.initialize"
     state = allModules.statemodule
-    secretStore = allModules.secretstoremodule
+    secretStore = allModules.clientstoremodule
     return
 
 ############################################################

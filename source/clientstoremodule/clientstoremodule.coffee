@@ -1,8 +1,8 @@
-secretstoremodule = {name: "secretstoremodule"}
+clientstoremodule = {name: "clientstoremodule"}
 ############################################################
 #region printLogFunctions
 log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["secretstoremodule"]?  then console.log "[secretstoremodule]: " + arg
+    if allModules.debugmodule.modulesToDebug["clientstoremodule"]?  then console.log "[clientstoremodule]: " + arg
     return
 ostr = (obj) -> JSON.stringify(obj, null, 4)
 olog = (obj) -> log "\n" + ostr(obj)
@@ -17,8 +17,8 @@ clientsList = []
 idToObjMap = {}
 
 ############################################################
-secretstoremodule.initialize = ->
-    log "secretstoremodule.initialize"
+clientstoremodule.initialize = ->
+    log "clientstoremodule.initialize"
     state = allModules.statemodule
     state.set("clientsList", clientsList)
     return
@@ -37,8 +37,8 @@ removeClientFromList = (client) ->
     return
 
 ############################################################
-secretstoremodule.storeNewClient = (client, type) ->
-    log "secretstoremodule.storeNewClient"
+clientstoremodule.storeNewClient = (client, type) ->
+    log "clientstoremodule.storeNewClient"
     try id = client.publicKeyHex
     catch err then return
     return if idToObjMap[id]?
@@ -50,8 +50,8 @@ secretstoremodule.storeNewClient = (client, type) ->
     state.callOutChange("clientsList")
     return
 
-secretstoremodule.removeClient = (client) ->
-    log "secretstoremodule.removeClient"
+clientstoremodule.removeClient = (client) ->
+    log "clientstoremodule.removeClient"
     try id = client.publicKeyHex
     catch err then return
     return unless idToObjMap[id]?
@@ -62,8 +62,9 @@ secretstoremodule.removeClient = (client) ->
     state.callOutChange("clientsList")
     return
 
-secretstoremodule.clientByIndex = (index) ->
-    log "secretstoremodule.clientByIndex"
+clientstoremodule.clientByIndex = (index) ->
+    log "clientstoremodule.clientByIndex"
     return clientsList[index]
 
-module.exports = secretstoremodule
+clientstoremodule
+module.exports = clientstoremodule

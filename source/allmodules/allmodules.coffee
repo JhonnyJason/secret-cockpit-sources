@@ -1,6 +1,8 @@
 import addsecretpopupmodule from "./addsecretpopupmodule"
 import addsubspacepopupmodule from "./addsubspacepopupmodule"
 import appcoremodule from "./appcoremodule"
+import clientsdisplaymodule from "./clientsdisplaymodule"
+import clientstoremodule from "./clientstoremodule"
 import configmodule from "./configmodule"
 import debugmodule from "./debugmodule"
 import deletesecretpopupmodule from "./deletesecretpopupmodule"
@@ -11,10 +13,8 @@ import footermodule from "./footermodule"
 import headermodule from "./headermodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
 import popupmodule from "./popupmodule"
-import secretsdisplaymodule from "./secretsdisplaymodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
 import secretspacepagemodule from "./secretspacepagemodule"
-import secretstoremodule from "./secretstoremodule"
 import settingspagemodule from "./settingspagemodule"
 import signatureinputpagemodule from "./signatureinputpagemodule"
 import slideinframemodule from "./slideinframemodule"
@@ -28,6 +28,8 @@ Modules = {
     addsecretpopupmodule,
     addsubspacepopupmodule,
     appcoremodule,
+    clientsdisplaymodule,
+    clientstoremodule,
     configmodule,
     debugmodule,
     deletesecretpopupmodule,
@@ -38,10 +40,8 @@ Modules = {
     headermodule,
     inputchoicesectionmodule,
     popupmodule,
-    secretsdisplaymodule,
     secretspacedisplaymodule,
     secretspacepagemodule,
-    secretstoremodule,
     settingspagemodule,
     signatureinputpagemodule,
     slideinframemodule,

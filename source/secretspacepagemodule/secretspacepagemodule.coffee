@@ -52,7 +52,7 @@ secretspacepagemodule.initialize = ->
     log "secretspacepagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.secretstoremodule
+    secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
 
     subspacePage = allModules.subspacepagemodule

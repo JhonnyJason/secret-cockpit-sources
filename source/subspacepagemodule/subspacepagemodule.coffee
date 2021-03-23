@@ -43,7 +43,7 @@ subspacepagemodule.initialize = ->
     log "subspacepagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.secretstoremodule
+    secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
 
     editPopup = allModules.editsecretpopupmodule

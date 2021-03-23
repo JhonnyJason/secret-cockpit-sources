@@ -29,7 +29,7 @@ unsafeinputpagemodule.initialize = ->
     log "unsafeinputpagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.secretstoremodule
+    secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
     # unsafeinputpageContent.
     slideinModule.wireUp(unsafeinputpageContent, clearContent, applyContent)

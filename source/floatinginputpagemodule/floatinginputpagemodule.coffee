@@ -29,7 +29,7 @@ floatinginputpagemodule.initialize = () ->
     log "floatinginputpagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.secretstoremodule
+    secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
     # floatinginputpageContent.
     

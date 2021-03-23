@@ -1,8 +1,8 @@
-secretsdisplaymodule = {name: "secretsdisplaymodule"}
+clientsdisplaymodule = {name: "clientsdisplaymodule"}
 ############################################################
 #region printLogFunctions
 log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["secretsdisplaymodule"]?  then console.log "[secretsdisplaymodule]: " + arg
+    if allModules.debugmodule.modulesToDebug["clientsdisplaymodule"]?  then console.log "[clientsdisplaymodule]: " + arg
     return
 ostr = (obj) -> JSON.stringify(obj, null, 4)
 olog = (obj) -> log "\n" + ostr(obj)
@@ -18,15 +18,16 @@ utl = null
 
 ############################################################
 template = null
-emptyContainerElement ="<p>No Known Secret here :-)</p>"
+emptyContainerElement ="<p>No Known Secret Client here :-)</p>"
 
 ############################################################
-secretsdisplaymodule.initialize = ->
-    log "secretsdisplaymodule.initialize"
+clientsdisplaymodule.initialize = ->
+    log "clientsdisplaymodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
     template = hiddenClientsDisplayTemplate.innerHTML
 
+    displayAllKnownClients()
     state.addOnChangeListener("clientsList", displayAllKnownClients)
     return
     
@@ -34,7 +35,8 @@ secretsdisplaymodule.initialize = ->
 displayAllKnownClients = ->
     log "displayAllKnownClients"
     clientsList = state.get("clientsList")
-    
+    return unless clientsList?
+
     cObj = {}
     content = ""
     for obj,i in clientsList
@@ -59,4 +61,4 @@ clientDisplayClicked = (evt) ->
     return
 
 
-module.exports = secretsdisplaymodule
+module.exports = clientsdisplaymodule

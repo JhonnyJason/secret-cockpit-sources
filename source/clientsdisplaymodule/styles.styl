@@ -1,0 +1,51 @@
+// clientsdisplay styles
+
+#hidden-clients-display-template
+    display none
+
+#clientsdisplay
+    border-top: solid 2px cd-foreground
+    padding 30px 10px
+    overflow hidden
+
+
+.clients-display
+    padding 20px
+    border solid 2px cd-foreground
+    border-radius 30px
+    display flex
+    align-content: center
+    cursor pointer
+    margin-bottom: 15px
+    overflow: hidden
+    box-sizing: border-box
+    width 100%
+    
+    .clients-id-display
+        width "calc(100% - %s)" % 33px
+        overflow hidden
+        text-overflow: ellipsis
+
+    .clients-type-display
+        margin-left: 10px
+        svg
+            width 20px
+            height 20px
+.selected
+    background-color cd-foreground
+    color cd-background
+    
+.unsafe-type,
+.floating-type,
+.signature-type
+    display none
+
+.unsafe
+    .unsafe-type
+        display block
+.floating
+    .floating-type
+        display block
+.signature
+    .signature-type
+        display block
