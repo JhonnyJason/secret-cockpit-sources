@@ -2,6 +2,10 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.storeunsafePopup = document.getElementById("storeunsafe-popup")
+    global.storeunsafeIdLine = document.getElementById("storeunsafe-id-line")
+    global.storeunsafeAsLine = document.getElementById("storeunsafe-as-line")
+    global.storeunsafeOptionsContainer = document.getElementById("storeunsafe-options-container")
     global.storesecretPopup = document.getElementById("storesecret-popup")
     global.storesecretIdLine = document.getElementById("storesecret-id-line")
     global.storesecretAsLine = document.getElementById("storesecret-as-line")

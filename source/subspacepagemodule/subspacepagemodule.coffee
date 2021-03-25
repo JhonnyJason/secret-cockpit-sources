@@ -25,6 +25,7 @@ editPopup = null
 addPopup = null
 deletePopup = null
 
+storePopup = null
 #endregion
 
 ############################################################
@@ -49,6 +50,7 @@ subspacepagemodule.initialize = ->
     editPopup = allModules.editsecretpopupmodule
     addPopup = allModules.addsecretpopupmodule
     deletePopup = allModules.deletesecretpopupmodule
+    storePopup = allModules.storesecretpopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
 
@@ -70,19 +72,6 @@ getSecretId = (el) ->
 
 ############################################################
 #region secretsEvents
-# deleteSecretButtonClicked = (evt) ->
-#     log "deleteSecretButtonClicked"
-#     secretId = getSecretId(evt.target)
-#     deletePopup.deleteSecret(clientObject.client, secretId)
-#     return
-
-# editSecretButtonClicked = (evt) ->
-#     log "editSecretButtonClicked"
-#     secretId = getSecretId(evt.target)
-#     editPopup.editSecret(clientObject.client, secretId)
-#     return
-
-
 copySecretButtonClicked = (evt) ->
     log "copySecretButtonClicked"
     setterId = state.get("chosenSubspaceId")
@@ -93,7 +82,10 @@ copySecretButtonClicked = (evt) ->
 
 storeSecretButtonClicked = (evt) ->
     log "storeSecretButtonClicked"
-    #TODO
+    secretId = getSecretId(evt.target)
+    fromId = state.get("chosenSubspaceId")
+    client = clientObject.client
+    storePopup.storeSharedSecret(client, fromId, secretId)
     return
 
 shareSecretButtonClicked = (evt) ->

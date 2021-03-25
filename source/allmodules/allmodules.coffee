@@ -11,6 +11,7 @@ import editsecretpopupmodule from "./editsecretpopupmodule"
 import floatinginputpagemodule from "./floatinginputpagemodule"
 import footermodule from "./footermodule"
 import headermodule from "./headermodule"
+import idaliasmodule from "./idaliasmodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
 import popupmodule from "./popupmodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
@@ -20,6 +21,7 @@ import signatureinputpagemodule from "./signatureinputpagemodule"
 import slideinframemodule from "./slideinframemodule"
 import statemodule from "./statemodule"
 import storesecretpopupmodule from "./storesecretpopupmodule"
+import storeunsafepopupmodule from "./storeunsafepopupmodule"
 import subspacepagemodule from "./subspacepagemodule"
 import unsafeinputpagemodule from "./unsafeinputpagemodule"
 import utilmodule from "./utilmodule"
@@ -38,6 +40,7 @@ Modules = {
     floatinginputpagemodule,
     footermodule,
     headermodule,
+    idaliasmodule,
     inputchoicesectionmodule,
     popupmodule,
     secretspacedisplaymodule,
@@ -47,6 +50,7 @@ Modules = {
     slideinframemodule,
     statemodule,
     storesecretpopupmodule,
+    storeunsafepopupmodule,
     subspacepagemodule,
     unsafeinputpagemodule,
     utilmodule,

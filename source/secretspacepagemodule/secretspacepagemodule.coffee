@@ -32,6 +32,7 @@ deleteSubspacePopup = null
 
 storePopup = null
 sharePopup = null
+storeUnsafePopup = null
 #endregion
 
 ############################################################
@@ -64,6 +65,7 @@ secretspacepagemodule.initialize = ->
     deleteSubspacePopup = allModules.deletesubspacepopupmodule
     storePopup = allModules.storesecretpopupmodule
     sharePopup = allModules.sharesecretpopupmodule
+    storeUnsafePopup = allModules.storeunsafepopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
     subspaceTemplate = hiddenSubspaceTemplate.innerHTML
@@ -183,7 +185,7 @@ qrForSecretKeyButtonClicked = ->
 
 storeSecretKeyButtonClicked = ->
     log "storeSecretKeyButtonClicked"
-    ##TODO
+    storeUnsafePopup.storeUnsafe(clientObject.client)
     return
 
 #endregion
