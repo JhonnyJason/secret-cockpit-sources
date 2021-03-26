@@ -69,7 +69,7 @@ displayStoreOptions = ->
                 when "signature" then continue unless inSignature
             cObj.index = i
             cObj.type = obj.type
-            cObj.id = utl.add0x(obj.client.publicKeyHex)        
+            cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
             optionsContent += mustache.render(clientTemplate, cObj)
             count++
     

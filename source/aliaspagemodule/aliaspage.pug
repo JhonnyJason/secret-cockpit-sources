@@ -1,0 +1,13 @@
+//- aliaspage structure
+extends ../slideinframemodule/slideinframe.pug
+block content
+    #hidden-alias-template
+        .alias(alias-id="{{id}}")
+            p.alias-id {{id}}
+            p.alias-label(contenteditable) {{alias}}
+
+    #aliaspage-content
+        h1 Aliases For Ids
+        #alias-container
+
+

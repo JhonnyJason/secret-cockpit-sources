@@ -1,5 +1,6 @@
 import addsecretpopupmodule from "./addsecretpopupmodule"
 import addsubspacepopupmodule from "./addsubspacepopupmodule"
+import aliaspagemodule from "./aliaspagemodule"
 import appcoremodule from "./appcoremodule"
 import clientsdisplaymodule from "./clientsdisplaymodule"
 import clientstoremodule from "./clientstoremodule"
@@ -29,6 +30,7 @@ import utilmodule from "./utilmodule"
 Modules = {
     addsecretpopupmodule,
     addsubspacepopupmodule,
+    aliaspagemodule,
     appcoremodule,
     clientsdisplaymodule,
     clientstoremodule,

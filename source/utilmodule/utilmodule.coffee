@@ -24,6 +24,12 @@ utilmodule.strip0x = (hex) ->
     return hex.slice(2)
 
 ############################################################
+utilmodule.idOrAlias = (id) ->
+    alias = allModules.idaliasmodule.aliasFrom(id)
+    if alias then return alias
+    else return utilmodule.add0x(id)
+
+############################################################
 utilmodule.seedToSecret = (seed) ->
     hashHex = await secUtl.sha512Hex(seed)
     shift = parseInt(hashHex[0], 16) * 2

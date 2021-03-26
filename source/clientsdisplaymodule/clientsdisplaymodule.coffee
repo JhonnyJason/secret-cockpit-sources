@@ -28,7 +28,9 @@ clientsdisplaymodule.initialize = ->
     template = hiddenClientsDisplayTemplate.innerHTML
 
     displayAllKnownClients()
+    state.addOnChangeListener("aliasToId", displayAllKnownClients)
     state.addOnChangeListener("clientsList", displayAllKnownClients)
+    aliasPageButton.addEventListener("click", aliasPageButtonClicked)
     return
     
 ############################################################
@@ -42,7 +44,7 @@ displayAllKnownClients = ->
     for obj,i in clientsList
         cObj.index = i
         cObj.type = obj.type
-        cObj.id = utl.add0x(obj.client.publicKeyHex)        
+        cObj.label = utl.idOrAlias(obj.client.publicKeyHex)        
         content += mustache.render(template, cObj)
 
     if content then clientsDisplayContainer.innerHTML = content
@@ -53,6 +55,11 @@ displayAllKnownClients = ->
     return
 
 ############################################################
+aliasPageButtonClicked = ->
+    log "aliasPageButtonClicked"
+    allModules.aliaspagemodule.slideIn()
+    return
+
 clientDisplayClicked = (evt) ->
     log "clientDisplayClicked"
     index = parseInt(evt.target.getAttribute("list-index"))

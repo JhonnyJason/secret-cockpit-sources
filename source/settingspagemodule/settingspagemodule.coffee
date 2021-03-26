@@ -26,18 +26,6 @@ settingspagemodule.initialize = ->
     slideinModule.wireUp(settingspageContent, clearContent, applyContent)
 
     syncSettingsFromState()
-
-    #region addAllEventListeneres
-    secretManagerInput.addEventListener("change", secretManagerInputChanged)
-    dataManagerInput.addEventListener("change", dataManagerInputChanged)
-    storeInUnsafeInput.addEventListener("change", storeInUnsafeInputChanged)
-    storeInFloatingInput.addEventListener("change", storeInFloatingInputChanged)
-    storeInSignatureInput.addEventListener("change", storeInSignatureInputChanged)
-    keyloggerProtectionInput.addEventListener("change", keyloggerProtectionInputChanged)
-    storeUnsafeInput.addEventListener("change", storeUnsafeInputChanged)
-    autodetectUnsafeInput.addEventListener("change", autodetectUnsafeInputChanged)
-    identifyingEndingInput.addEventListener("change", identifyingEndingInputChanged)
-    #endregion
     return
 
 ############################################################
@@ -50,10 +38,7 @@ clearContent = ->
 
 applyContent = ->
     log "applyContent"
-    secretManagerURL = secretManagerInput.value
-    state.save("secretManagerURL", secretManagerURL)
-    keyloggerProtection = keyloggerProtectionInput.checked
-    state.save("keyloggerProtection", keyloggerProtection)
+    syncSettingsToState()
     return
 
 ############################################################
@@ -83,56 +68,45 @@ syncSettingsFromState = ->
     identifyingEndingInput.value = identifyingEnding 
     return
 
-############################################################
-#region eventListeners
-secretManagerInputChanged = ->
+syncSettingsToState = ->
+    log "syncSettingsToState"
+    ## Secret Manager URL
     url = secretManagerInput.value
     url = "https://"+url unless url.indexOf("https://") == 0
-    state.save("secretManagerURL", url)
-    return
-
-dataManagerInputChanged = ->
+    state.set("secretManagerURL", url)
+    ## Data Manager URL
     url = dataManagerInput.value
     url = "http://"+url unless url.indexOf("https://") == 0
-    state.save("dataManagerURL", url)
-    return
+    state.set("dataManagerURL", url)
 
-storeInUnsafeInputChanged = ->
+    ## Key Storing Options
     checked = storeInUnsafeInput.checked
-    state.save("storeUnsafeInUnsafe", checked)
-    return
-
-storeInFloatingInputChanged = ->
+    state.set("storeUnsafeInUnsafe", checked)
     checked = storeInFloatingInput.checked
-    state.save("storeUnsafeInFloating", checked)
-    return
-
-storeInSignatureInputChanged = ->
+    state.set("storeUnsafeInFloating", checked)
     checked = storeInSignatureInput.checked
-    state.save("storeUnsafeInSignature", checked)
-    return
+    state.set("storeUnsafeInSignature", checked)
 
-keyloggerProtectionInputChanged = ->
+    ## KeyLogger Protection
     checked = keyloggerProtectionInput.checked
-    state.save("keyloggerProtection", checked)
-    return
+    state.set("keyloggerProtection", checked)
 
-storeUnsafeInputChanged = ->
+    ## Store Unsafe Secret in LocalStorage
     checked = storeUnsafeInput.checked
-    state.save("storeUnsafeInLocalStorage", checked)
-    return
+    state.set("storeUnsafeInLocalStorage", checked)
 
-autodetectUnsafeInputChanged = ->
+    ## Autodetect Stored Secrets
     checked = autodetectUnsafeInput.checked
-    state.save("autodetectStoredSecrets", checked)
-    return
+    state.set("autodetectStoredSecrets", checked)
 
-identifyingEndingInputChanged = ->
+    ## Ending which identifies a stored Secret
     value = identifyingEndingInput.value
     state.save("secretIdentifyingEnding", value)
+    ## As all Settings are in the regular State
+    ## We only have to call the save method once
+    ## And all the regular state is stored in localStorage :-)
     return
 
-#endregion
 
 #endregion
 

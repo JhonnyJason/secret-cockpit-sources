@@ -2,9 +2,11 @@
 #clientsdisplay
     #hidden-clients-display-template
         .clients-display.click-button.content(class="{{type}}" list-index="{{index}}")
-            .clients-id-display {{id}}
+            .clients-id-display {{label}}
             .clients-type-display
                 svg.unsafe-type: use(href="#svg-text-icon")
                 svg.floating-type: use(href="#svg-code-icon")
                 svg.signature-type: use(href="#svg-metamask-icon")
     #clients-display-container
+
+    #alias-page-button.click-button Aliases

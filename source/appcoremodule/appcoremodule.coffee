@@ -14,18 +14,20 @@ clientFactory  = require("secret-manager-client")
 
 ############################################################
 state = null
-secretStore = null
+clientStore = null
 
 ############################################################
 appcoremodule.initialize = ->
     log "appcoremodule.initialize"
     state = allModules.statemodule
-    secretStore = allModules.clientstoremodule
+    clientStore = allModules.clientstoremodule
     return
 
 ############################################################
 appcoremodule.startUp = ->
     log "appcoremodule.startUp"
+    # allModules.aliaspagemodule.slideIn()
+    return
     allModules.settingspagemodule.slideIn()
     return
 
@@ -33,7 +35,7 @@ appcoremodule.startUp = ->
     mockedSecret = "e1400aa698ca52b67510a0b7a22daef4bac99807b511cd2508689064154b5c29"
     client = await clientFactory.createClient(mockedSecret, null, url)
 
-    secretStore.storeNewClient(client, "unsafe")
+    clientStore.storeNewClient(client, "unsafe")
 
     state.set("chosenClientIndex", 0)
     allModules.secretspacepagemodule.slideIn()

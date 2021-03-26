@@ -7,6 +7,6 @@ defaultstate =
     keyloggerProtection: false
     storeUnsafeInLocalStorage: false
     autodetectStoredSecrets: true
-    secretIdentifyingEnding: "Secret"
+    secretIdentifyingEnding: "Key"
     
 module.exports = defaultstate
