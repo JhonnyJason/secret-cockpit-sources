@@ -17,6 +17,7 @@ mustache = require("mustache")
 ############################################################
 utl = null
 state = null
+aliasModule = null
 secretStore = null
 slideinModule = null
 
@@ -44,6 +45,7 @@ subspacepagemodule.initialize = ->
     log "subspacepagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
+    aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
 
@@ -128,9 +130,13 @@ qrForSharedToIdButtonClicked = ->
 #region displayFunctions
 displayDetailsInformation = ->
     log "displayDetailsInformation"
-    sharedToIdLine.textContent = utl.add0x(clientObject.client.publicKeyHex)
+    sharedToId = clientObject.client.publicKeyHex
+    sharedToIdLine.textContent = utl.add0x(sharedToId)
+    sharedToAlias.textContent = aliasModule.aliasFrom(sharedToId)
+
     sharedFromId = state.get("chosenSubspaceId")
     sharedFromIdLine.textContent = utl.add0x(sharedFromId)
+    sharedFromAlias.textContent = aliasModule.aliasFrom(sharedFromId)
     return
 
 displayCurrentSubspace = ->

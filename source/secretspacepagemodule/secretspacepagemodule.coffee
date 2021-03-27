@@ -17,6 +17,7 @@ mustache = require("mustache")
 ############################################################
 utl = null
 state = null
+aliasModule = null
 secretStore = null
 slideinModule = null
 
@@ -53,6 +54,7 @@ secretspacepagemodule.initialize = ->
     log "secretspacepagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
+    aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
 
@@ -194,7 +196,10 @@ storeSecretKeyButtonClicked = ->
 #region displayFunctions
 displayClientInformation = ->
     log "displayClientInformation"
-    idLine.textContent = utl.add0x(clientObject.client.publicKeyHex)
+    id = clientObject.client.publicKeyHex
+    idLine.textContent = utl.add0x(id)
+    alias = aliasModule.aliasFrom(id)
+    if alias? then secretspacepageAlias.textContent = alias 
     secretKeyHandleLine.className = clientObject.type
     if clientObject.type == "unsafe" 
         secretKeyLine.textContent = utl.add0x(clientObject.client.secretKeyHex)
@@ -258,11 +263,16 @@ clearContent = ->
     clientObject = null
     state.set("chosenClientIndex", null)
     secretsContainer.innerHTML = ""
+    secretspacepageAlias.textContent = ""
     return
 
 applyContent = ->
     log "applyContent"
-    ## TODO?
+    id = clientObject.client.publicKeyHex
+    alias = aliasModule.aliasFrom(id)
+    if !alias? then alias = ""
+    newAlias = secretspacepageAlias.textContent
+    if alias != newAlias then aliasModule.updateAlias(newAlias, id)
     clearContent()
     return
 

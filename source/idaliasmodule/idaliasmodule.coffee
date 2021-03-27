@@ -40,9 +40,15 @@ idaliasmodule.aliasFrom = (id) -> idToAlias[id]
 
 idaliasmodule.getAllIds = -> Object.keys(idToAlias)
 
-idaliasmodule.addAlias = (alias, id) ->
-    aliasToId[alias] = id
-    idToAlias[id] = alias
+idaliasmodule.updateAlias = (alias, id) ->
+    oldAlias = idToAlias[id] 
+    if oldAlias? and oldAlias != alias then delete idToAlias[id]
+
+    if !alias then delete aliasToId[oldAlias]
+    else
+        aliasToId[alias] = id
+        idToAlias[id] = alias
+
     state.save("aliasToId")
     state.callOutChange("aliasToId")
     return
