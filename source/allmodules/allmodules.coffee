@@ -18,6 +18,7 @@ import popupmodule from "./popupmodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
 import secretspacepagemodule from "./secretspacepagemodule"
 import settingspagemodule from "./settingspagemodule"
+import sharesecretpopupmodule from "./sharesecretpopupmodule"
 import signatureinputpagemodule from "./signatureinputpagemodule"
 import slideinframemodule from "./slideinframemodule"
 import statemodule from "./statemodule"
@@ -48,6 +49,7 @@ Modules = {
     secretspacedisplaymodule,
     secretspacepagemodule,
     settingspagemodule,
+    sharesecretpopupmodule,
     signatureinputpagemodule,
     slideinframemodule,
     statemodule,

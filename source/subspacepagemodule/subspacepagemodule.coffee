@@ -90,11 +90,6 @@ storeSecretButtonClicked = (evt) ->
     storePopup.storeSharedSecret(client, fromId, secretId)
     return
 
-shareSecretButtonClicked = (evt) ->
-    log "shareSecretButtonClicked"
-    #TODO
-    return
-
 #endregion
 
 
@@ -158,8 +153,6 @@ displayCurrentSubspace = ->
     storeButtons = sharedSecretsContainer.getElementsByClassName("store-secret-button")
     btn.addEventListener("click", storeSecretButtonClicked) for btn in storeButtons
 
-    shareButtons = sharedSecretsContainer.getElementsByClassName("share-secret-button")
-    btn.addEventListener("click", shareSecretButtonClicked) for btn in shareButtons
     return
 
 

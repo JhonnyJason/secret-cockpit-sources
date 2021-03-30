@@ -2,6 +2,10 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.sharesecretPopup = document.getElementById("sharesecret-popup")
+    global.sharesecretIdLine = document.getElementById("sharesecret-id-line")
+    global.sharesecretToIdLine = document.getElementById("sharesecret-to-id-line")
+    global.sharesecretOptionsContainer = document.getElementById("sharesecret-options-container")
     global.storeunsafePopup = document.getElementById("storeunsafe-popup")
     global.storeunsafeIdLine = document.getElementById("storeunsafe-id-line")
     global.storeunsafeAsLine = document.getElementById("storeunsafe-as-line")
@@ -41,7 +45,6 @@ indexdomconnect.initialize = () ->
     global.secretspacepageContent = document.getElementById("secretspacepage-content")
     global.secretsContainer = document.getElementById("secrets-container")
     global.addSecretButton = document.getElementById("add-secret-button")
-    global.shareNewSecretButton = document.getElementById("share-new-secret-button")
     global.subspacesContainer = document.getElementById("subspaces-container")
     global.addSubspaceButton = document.getElementById("add-subspace-button")
     global.idLine = document.getElementById("id-line")

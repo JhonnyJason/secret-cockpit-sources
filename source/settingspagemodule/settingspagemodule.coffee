@@ -26,6 +26,7 @@ settingspagemodule.initialize = ->
     slideinModule.wireUp(settingspageContent, clearContent, applyContent)
 
     syncSettingsFromState()
+    markAllSettingsAsRegularState()
     return
 
 ############################################################
@@ -42,6 +43,23 @@ applyContent = ->
     return
 
 ############################################################
+markAllSettingsAsRegularState = ->
+    log "markAllSettingsAsRegularState"
+    state.save("secretManagerURL", state.load("secretManagerURL"))
+    state.save("dataManagerURL", state.load("dataManagerURL"))
+    
+    state.save("storeUnsafeInUnsafe", state.load("storeUnsafeInUnsafe"))
+    state.save("storeUnsafeInFloating", state.load("storeUnsafeInFloating"))
+    state.save("storeUnsafeInSignature", state.load("storeUnsafeInSignature"))
+    
+    state.save("keyloggerProtection", state.load("keyloggerProtection"))
+    
+    state.save("storeUnsafeInLocalStorage", state.load("storeUnsafeInLocalStorage"))
+    state.save("autodetectStoredSecrets", state.load("autodetectStoredSecrets"))
+
+    state.save("secretIdentifyingEnding", state.load("secretIdentifyingEnding"))
+    return
+
 syncSettingsFromState = ->
     log "syncSecretManagerURLFromState"
     secretManagerURL = state.load("secretManagerURL")
@@ -101,7 +119,9 @@ syncSettingsToState = ->
 
     ## Ending which identifies a stored Secret
     value = identifyingEndingInput.value
-    state.save("secretIdentifyingEnding", value)
+    state.set("secretIdentifyingEnding", value)
+
+    state.saveRegularState()
     ## As all Settings are in the regular State
     ## We only have to call the save method once
     ## And all the regular state is stored in localStorage :-)

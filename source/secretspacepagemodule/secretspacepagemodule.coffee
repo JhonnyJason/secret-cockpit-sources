@@ -76,7 +76,6 @@ secretspacepagemodule.initialize = ->
     slideinModule.wireUp(secretspacepageContent, clearContent, applyContent)
     
     addSecretButton.addEventListener("click", addSecretButtonClicked)
-    shareNewSecretButton.addEventListener("click", shareNewSecretButtonClicked)
     
     addSubspaceButton.addEventListener("click", addSubspaceButtonClicked)
 
@@ -110,6 +109,7 @@ editSecretButtonClicked = (evt) ->
     return
 
 
+############################################################
 copySecretButtonClicked = (evt) ->
     log "copySecretButtonClicked"
     secretId = getSecretId(evt.target)
@@ -126,17 +126,14 @@ storeSecretButtonClicked = (evt) ->
 shareSecretButtonClicked = (evt) ->
     log "shareSecretButtonClicked"
     id = getSecretId(evt.target)
-    # sharePopup.shareSecret(clientObject.client, id)
+    sharePopup.shareSecret(clientObject.client, id)
     return
 
+
+############################################################
 addSecretButtonClicked = ->
     log "addSecretButtonClicked"
     addPopup.addSecret(clientObject.client)
-    return
-
-shareNewSecretButtonClicked = ->
-    log "shareNewSecretButtonClicked"
-    #TODO
     return
 
 #endregion
@@ -243,6 +240,7 @@ displaySubspaces = ->
     content = ""
     for id in secretIds when !currentSpace[id].secret?
         cObj.subspaceId = id
+        cObj.subspaceLabel = utl.idOrAlias(id)
         content += mustache.render(subspaceTemplate, cObj)
 
     if content then subspacesContainer.innerHTML = content

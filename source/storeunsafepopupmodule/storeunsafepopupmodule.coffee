@@ -61,17 +61,16 @@ displayStoreOptions = ->
 
     cObj = {}
     count = 0
-    if state.get("storeUnsafeInFloating")
-        for obj,i in clientsList when obj.client != currentClient
-            switch obj.type
-                when "unsafe" then continue unless inUnsafe
-                when "floating" then continue unless inFloating
-                when "signature" then continue unless inSignature
-            cObj.index = i
-            cObj.type = obj.type
-            cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
-            optionsContent += mustache.render(clientTemplate, cObj)
-            count++
+    for obj,i in clientsList when obj.client != currentClient
+        switch obj.type
+            when "unsafe" then continue unless inUnsafe
+            when "floating" then continue unless inFloating
+            when "signature" then continue unless inSignature
+        cObj.index = i
+        cObj.type = obj.type
+        cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
+        optionsContent += mustache.render(clientTemplate, cObj)
+        count++
     
     if !optionsContent then storeunsafeOptionsContainer.innerHTML = noStoreOptionsLine
     else storeunsafeOptionsContainer.innerHTML = optionsContent
@@ -117,9 +116,10 @@ storeunsafepopupmodule.storeUnsafe = (client) ->
     currentClient = client
     chosenIndex  = null
     identifier = state.get("secretIdentifyingEnding")
+    id = client.publicKeyHex
 
-    storeunsafeIdLine.textContent = utl.add0x(client.publicKeyHex)
-    storeunsafeAsLine.textContent = utl.add0x(client.publicKeyHex) + identifier
+    storeunsafeIdLine.textContent = utl.add0x(id)
+    storeunsafeAsLine.textContent = utl.idOrAlias(id) + identifier
 
     displayStoreOptions()
 
