@@ -20,6 +20,7 @@ state = null
 aliasModule = null
 secretStore = null
 slideinModule = null
+qrDisplay = null
 
 ############################################################
 subspacePage = null
@@ -59,6 +60,7 @@ secretspacepagemodule.initialize = ->
     aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
+    qrDisplay = allModules.qrdisplaymodule
 
     subspacePage = allModules.subspacepagemodule
 
@@ -174,7 +176,7 @@ copyIdButtonClicked = ->
 
 qrForIdButtonClicked = ->
     log "qrForIdButtonClicked"
-    ##TODO
+    qrDisplay.displayCode(clientObject.client.publicKeyHex)
     return
 
 copySecretKeyButtonClicked = ->
@@ -184,7 +186,7 @@ copySecretKeyButtonClicked = ->
 
 qrForSecretKeyButtonClicked = ->
     log "qrForSecretKeyButtonClicked"
-    ##TODO
+    qrDisplay.displayCode(clientObject.client.secretKeyHex)
     return
 
 storeSecretKeyButtonClicked = ->
