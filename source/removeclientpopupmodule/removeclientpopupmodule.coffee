@@ -1,8 +1,8 @@
-deletesubspacepopupmodule = {name: "deletesubspacepopupmodule"}
+removeclientpopupmodule = {name: "removeclientpopupmodule"}
 ############################################################
 #region printLogFunctions
 log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["deletesubspacepopupmodule"]?  then console.log "[deletesubspacepopupmodule]: " + arg
+    if allModules.debugmodule.modulesToDebug["removeclientpopupmodule"]?  then console.log "[removeclientpopupmodule]: " + arg
     return
 ostr = (obj) -> JSON.stringify(obj, null, 4)
 olog = (obj) -> log "\n" + ostr(obj)
@@ -13,41 +13,42 @@ print = (arg) -> console.log(arg)
 #region localModules
 utl = null
 popupModule = null
+clientStore = null
 secretSpacePage = null
 
 #endregion
 
 ############################################################
 currentClient = null
-currentSubspaceId = null
 
 ############################################################
-deletesubspacepopupmodule.initialize = () ->
-    log "deletesubspacepopupmodule.initialize"
+removeclientpopupmodule.initialize = ->
+    log "removeclientpopupmodule.initialize"
     utl = allModules.utilmodule
     popupModule = allModules.popupmodule
+    clientStore = allModules.clientstoremodule
     secretSpacePage = allModules.secretspacepagemodule
 
-    #deletesubspacePopup.
-    popupModule.wireUp(deletesubspacePopup, applyDeletion)
+    #removeclientPopup.
+    popupModule.wireUp(removeclientPopup, applyRemoval)
     return
 
 ############################################################
-applyDeletion = ->
-    log "applyDeletion"
-    await currentClient.stopAcceptSecretsFrom(currentSubspaceId)
-    secretSpacePage.slideIn()
+applyRemoval = ->
+    log "applyRemoval"
+    clientStore.removeClient(currentClient)
+    secretSpacePage.slideOut()
     return
 
 ############################################################
-deletesubspacepopupmodule.deleteSubspace = (client, id) ->
-    log "deletesubspacepopupmodule.deleteSubspace"
+removeclientpopupmodule.removeClient = (client) ->
+    log "removeclientpopupmodule.removeclient"
     currentClient = client
-    currentSubspaceId = id
 
-    deletesubspaceId.textContent = utl.add0x(id)
-    popupModule.popupForContentElement(deletesubspacePopup)
+    clientToRemoveId.textContent = utl.add0x(client.publicKeyHex)
+
+    popupModule.popupForContentElement(removeclientPopup)
     return
 
     
-module.exports = deletesubspacepopupmodule
+module.exports = removeclientpopupmodule

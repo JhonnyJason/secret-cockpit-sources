@@ -34,6 +34,8 @@ deleteSubspacePopup = null
 storePopup = null
 sharePopup = null
 storeUnsafePopup = null
+
+removePopup = null
 #endregion
 
 ############################################################
@@ -68,6 +70,7 @@ secretspacepagemodule.initialize = ->
     storePopup = allModules.storesecretpopupmodule
     sharePopup = allModules.sharesecretpopupmodule
     storeUnsafePopup = allModules.storeunsafepopupmodule
+    removePopup = allModules.removeclientpopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
     subspaceTemplate = hiddenSubspaceTemplate.innerHTML
@@ -84,6 +87,8 @@ secretspacepagemodule.initialize = ->
     copySecretKeyButton.addEventListener("click", copySecretKeyButtonClicked)
     qrForSecretKeyButton.addEventListener("click", qrForSecretKeyButtonClicked)
     storeSecretKeyButton.addEventListener("click", storeSecretKeyButtonClicked)
+    
+    removeClientButton.addEventListener("click", removeClientButtonClicked)
     return
 
 ############################################################
@@ -185,6 +190,11 @@ qrForSecretKeyButtonClicked = ->
 storeSecretKeyButtonClicked = ->
     log "storeSecretKeyButtonClicked"
     storeUnsafePopup.storeUnsafe(clientObject.client)
+    return
+
+removeClientButtonClicked = ->
+    log "removeClientButtonClicked"#
+    removePopup.removeClient(clientObject.client)
     return
 
 #endregion

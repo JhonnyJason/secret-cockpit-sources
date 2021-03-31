@@ -15,6 +15,7 @@ import headermodule from "./headermodule"
 import idaliasmodule from "./idaliasmodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
 import popupmodule from "./popupmodule"
+import removeclientpopupmodule from "./removeclientpopupmodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
 import secretspacepagemodule from "./secretspacepagemodule"
 import settingspagemodule from "./settingspagemodule"
@@ -46,6 +47,7 @@ Modules = {
     idaliasmodule,
     inputchoicesectionmodule,
     popupmodule,
+    removeclientpopupmodule,
     secretspacedisplaymodule,
     secretspacepagemodule,
     settingspagemodule,

@@ -8,7 +8,7 @@ debugmodule.initialize = () ->
 debugmodule.modulesToDebug = 
     unbreaker: true
     # aliaspagemodule: true
-    # addsubspacepopupmodule: true
+    addsubspacepopupmodule: true
     # clientstoremodule: true
     # configmodule: true
     # editsecretpopupmodule: true
@@ -17,7 +17,7 @@ debugmodule.modulesToDebug =
     # floatinginputpagemodule: true
     # clientsdisplaymodule: true
     # secretspacepagemodule: true
-    sharesecretpopupmodule: true
+    # sharesecretpopupmodule: true
     # storesecretpopupmodule: true
     # storeunsafepopupmodule: true
     # subspacepagemodule: true

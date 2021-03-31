@@ -2,6 +2,8 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.removeclientPopup = document.getElementById("removeclient-popup")
+    global.clientToRemoveId = document.getElementById("client-to-remove-id")
     global.sharesecretPopup = document.getElementById("sharesecret-popup")
     global.sharesecretIdLine = document.getElementById("sharesecret-id-line")
     global.sharesecretToIdLine = document.getElementById("sharesecret-to-id-line")
@@ -18,6 +20,7 @@ indexdomconnect.initialize = () ->
     global.deletesubspaceId = document.getElementById("deletesubspace-id")
     global.addsubspacePopup = document.getElementById("addsubspace-popup")
     global.addsubspaceId = document.getElementById("addsubspace-id")
+    global.easyAddOptionsContainer = document.getElementById("easy-add-options-container")
     global.deletesecretPopup = document.getElementById("deletesecret-popup")
     global.deleteSecretIdLine = document.getElementById("delete-secret-id-line")
     global.deleteSecretLine = document.getElementById("delete-secret-line")
@@ -56,6 +59,7 @@ indexdomconnect.initialize = () ->
     global.copySecretKeyButton = document.getElementById("copy-secret-key-button")
     global.qrForSecretKeyButton = document.getElementById("qr-for-secret-key-button")
     global.storeSecretKeyButton = document.getElementById("store-secret-key-button")
+    global.removeClientButton = document.getElementById("remove-client-button")
     global.signatureinputpageContent = document.getElementById("signatureinputpage-content")
     global.signatureSecretInput = document.getElementById("signature-secret-input")
     global.floatinginputpageContent = document.getElementById("floatinginputpage-content")
