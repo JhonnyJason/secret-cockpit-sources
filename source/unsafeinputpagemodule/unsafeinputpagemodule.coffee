@@ -59,7 +59,16 @@ createUnsafeButtonClicked = ->
 
 scanQrButtonClicked = ->
     log "scanQrButtonClicked"
-    data = qrReader.read()
+    data = await qrReader.read()
+    return unless data?
+    url = state.get("secretManagerURL")
+    try
+        currentClient = await clientFactory.createClient(data, null, url)
+        key = utl.add0x(currentClient.secretKeyHex)
+        id = utl.add0x(currentClient.publicKeyHex)
+        unsafeSecretInput.value = key
+        unsafeIdLine.textContent = id
+    catch err then log err
     return
 
 secretInputChanged = ->
@@ -74,7 +83,6 @@ secretInputChanged = ->
         unsafeIdLine.textContent = id
     catch err then log err
     return
-
 
 ############################################################
 clearContent = ->

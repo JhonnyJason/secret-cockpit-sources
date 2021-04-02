@@ -14,6 +14,7 @@ QRScanner = require("qr-scanner").default
 
 ############################################################
 currentReader = null
+currentResolver = null
 hasCamera = false
 
 ############################################################
@@ -35,13 +36,19 @@ qrreadermodule.initialize = ->
 ############################################################
 dataRead = (data) ->
     log "dataRead"
-    log data
+    log data.length
+    if data.length > 20 and currentResolver?
+        currentResolver(data)
+        currentResolver = null
+        currentReader.stop()
+        qrreaderBackground.classList.remove("active")
     return
 
 readerClicked = ->
     log "readerClicked"
     currentReader.stop()
-
+    if currentResolver? then currentResolver(null)
+    currentResolver = null
     qrreaderBackground.classList.remove("active")
     return
 
@@ -54,7 +61,7 @@ qrreadermodule.read = ->
     currentReader.start()
     qrreaderBackground.classList.add("active")
 
-    return
+    return new Promise (resolve) -> currentResolver = resolve
 
     
 module.exports = qrreadermodule
