@@ -37,7 +37,7 @@ qrreadermodule.initialize = ->
 dataRead = (data) ->
     log "dataRead"
     log data.length
-    if data.length > 20 and currentResolver?
+    if data.length == 64 and currentResolver?
         currentResolver(data)
         currentResolver = null
         currentReader.stop()
