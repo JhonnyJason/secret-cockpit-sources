@@ -2,6 +2,9 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.qrreaderBackground = document.getElementById("qrreader-background")
+    global.qrreaderVideoElement = document.getElementById("qrreader-video-element")
+    global.qrdisplayBackground = document.getElementById("qrdisplay-background")
     global.removeclientPopup = document.getElementById("removeclient-popup")
     global.clientToRemoveId = document.getElementById("client-to-remove-id")
     global.sharesecretPopup = document.getElementById("sharesecret-popup")

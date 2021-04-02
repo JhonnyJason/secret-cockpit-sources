@@ -13,7 +13,8 @@ debugmodule.modulesToDebug =
     # configmodule: true
     # editsecretpopupmodule: true
     # idaliasmodule: true
-    qrdisplaymodule: true
+    # qrdisplaymodule: true
+    qrreadermodule: true
     # unsafeinputpagemodule: true
     # floatinginputpagemodule: true
     # clientsdisplaymodule: true

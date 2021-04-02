@@ -16,6 +16,7 @@ import idaliasmodule from "./idaliasmodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
 import popupmodule from "./popupmodule"
 import qrdisplaymodule from "./qrdisplaymodule"
+import qrreadermodule from "./qrreadermodule"
 import removeclientpopupmodule from "./removeclientpopupmodule"
 import secretspacedisplaymodule from "./secretspacedisplaymodule"
 import secretspacepagemodule from "./secretspacepagemodule"
@@ -49,6 +50,7 @@ Modules = {
     inputchoicesectionmodule,
     popupmodule,
     qrdisplaymodule,
+    qrreadermodule,
     removeclientpopupmodule,
     secretspacedisplaymodule,
     secretspacepagemodule,

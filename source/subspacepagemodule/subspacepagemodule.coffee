@@ -20,6 +20,7 @@ state = null
 aliasModule = null
 secretStore = null
 slideinModule = null
+qrDisplay = null
 
 ############################################################
 editPopup = null
@@ -48,6 +49,7 @@ subspacepagemodule.initialize = ->
     aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
+    qrDisplay = allModules.qrdisplaymodule
 
     editPopup = allModules.editsecretpopupmodule
     addPopup = allModules.addsecretpopupmodule
@@ -103,7 +105,8 @@ copySharedFromIdButtonClicked = ->
 
 qrForSharedFromIdButtonClicked = ->
     log "qrForSharedFromIdButtonClicked"
-    ##TODO
+    id = state.get("chosenSubspaceId")
+    qrDisplay.displayCode(id)    
     return
 
 ############################################################
@@ -115,7 +118,8 @@ copySharedToIdButtonClicked = ->
 
 qrForSharedToIdButtonClicked = ->
     log "qrForSharedToIdButtonClicked"
-    ##TODO
+    id = clientObject.client.publicKeyHex
+    qrDisplay.displayCode(id)    
     return
 
 #endregion

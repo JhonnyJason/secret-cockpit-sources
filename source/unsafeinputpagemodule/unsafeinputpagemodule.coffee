@@ -18,6 +18,7 @@ utl = null
 state = null
 secretStore = null
 slideinModule = null
+qrReader = null
 
 #endregion
 
@@ -31,6 +32,8 @@ unsafeinputpagemodule.initialize = ->
     state = allModules.statemodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
+    qrReader = allModules.qrreadermodule
+
     # unsafeinputpageContent.
     slideinModule.wireUp(unsafeinputpageContent, clearContent, applyContent)
 
@@ -56,7 +59,7 @@ createUnsafeButtonClicked = ->
 
 scanQrButtonClicked = ->
     log "scanQrButtonClicked"
-    #TODO implement
+    data = qrReader.read()
     return
 
 secretInputChanged = ->
