@@ -14,6 +14,7 @@ import footermodule from "./footermodule"
 import headermodule from "./headermodule"
 import idaliasmodule from "./idaliasmodule"
 import inputchoicesectionmodule from "./inputchoicesectionmodule"
+import messageboxmodule from "./messageboxmodule"
 import popupmodule from "./popupmodule"
 import qrdisplaymodule from "./qrdisplaymodule"
 import qrreadermodule from "./qrreadermodule"
@@ -48,6 +49,7 @@ Modules = {
     headermodule,
     idaliasmodule,
     inputchoicesectionmodule,
+    messageboxmodule,
     popupmodule,
     qrdisplaymodule,
     qrreadermodule,

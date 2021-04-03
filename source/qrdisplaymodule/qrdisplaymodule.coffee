@@ -24,11 +24,10 @@ qrdisplaymodule.initialize = ->
         size: 320
         toTable: false
         ecclevel: 3
-        noBorder: false
-        borderSize: 4
+        noBorder: true
 
     currentQr = new QR(options)
-    qrdisplayBackground.appendChild(currentQr.domElement)    
+    qrdisplayQr.appendChild(currentQr.domElement)    
 
     qrdisplayBackground.addEventListener("click", qrClicked)
 
@@ -45,6 +44,7 @@ qrdisplaymodule.displayCode = (information) ->
     log "qrdisplaymodule.displayCode"
     log information
     currentQr.url = information
+    qrdisplayContent.textContent = information
     currentQr.init()
     qrdisplayBackground.classList.add("active")
     return
