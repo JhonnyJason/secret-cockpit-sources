@@ -11,6 +11,7 @@ print = (arg) -> console.log(arg)
 
 ############################################################
 QRScanner = require("qr-scanner").default
+msgBox = null
 
 ############################################################
 currentReader = null
@@ -20,6 +21,7 @@ hasCamera = false
 ############################################################
 qrreadermodule.initialize = ->
     log "qrreadermodule.initialize"
+    msgBox = allModules.messageboxmodule
 
     QRScanner.WORKER_PATH = "/scannerworker.js"
     hasCamera = await QRScanner.hasCamera()
@@ -56,7 +58,9 @@ readerClicked = ->
 ############################################################
 qrreadermodule.read = ->
     log "qrreadermodule.read"
-    return unless hasCamera
+    if !hasCamera
+        msgBox.error("We don't have a Camera!")
+        return
 
     currentReader.start()
     qrreaderBackground.classList.add("active")

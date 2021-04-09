@@ -11,6 +11,7 @@ print = (arg) -> console.log(arg)
 
 ############################################################
 stayDurationMS = 5000
+currentTimeoutId = null
 
 ############################################################
 messageboxmodule.initialize = ->
@@ -18,16 +19,19 @@ messageboxmodule.initialize = ->
     c = allModules.configmodule
     if c.messageboxStayDurationMS? then stayDurationMS = c.messageboxStayDurationMS
     return
+
 ############################################################
 letDisappear = ->
     log "letDisappear"
-    setTimeout(disappear, stayDurationMS)
+    if currentTimeoutId? then clearTimeout(currentTimeoutId)
+    currentTimeoutId = setTimeout(disappear, stayDurationMS)
     return
 
 disappear = ->
     log "disappear"
     messagebox.textContent = ""
     messagebox.className = "gone"
+    currentTimeoutId = null
     return    
 
 ############################################################

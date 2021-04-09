@@ -3,15 +3,17 @@
     padding 12px
     box-sizing: border-box
     width 70%
-    background-color black 
+    background-color element-background 
     border-radius  10px 10px 0 0
     position fixed
     bottom 0
     left 10%
-    transition transform 0.5s
+    transition all 0.5s
+    z-index 555
 
 #messagebox.gone
     transform translateY(50px)
+    opacity: 0
 
 #messagebox.error
     background-color red 

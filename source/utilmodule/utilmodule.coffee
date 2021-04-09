@@ -12,6 +12,8 @@ print = (arg) -> console.log(arg)
 secUtl = require("secret-manager-crypto-utils")
 Object.assign(utilmodule, secUtl)
 
+msgBox = require("./messageboxmodule")
+
 ############################################################
 utilmodule.add0x = (hex) ->
     if !hex? then throw new Error("add0x - undefined argument!")
@@ -40,6 +42,7 @@ utilmodule.copyToClipboard = (text) ->
     try 
         await navigator.clipboard.writeText(text)
         log "Clipboard API succeeded"
+        if msgBox? then msgBox.info("Copied: "+text)
         return
     catch err then log err
 
@@ -62,6 +65,7 @@ utilmodule.copyToClipboard = (text) ->
 
     #remove element again
     document.body.removeChild(copyElement)
+    if msgBox? then msgBox.info("Copied: "+text)
     return
 
 
