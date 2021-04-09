@@ -35,6 +35,7 @@ deleteSubspacePopup = null
 storePopup = null
 sharePopup = null
 storeUnsafePopup = null
+storeIdPopup = null
 
 removePopup = null
 #endregion
@@ -72,6 +73,7 @@ secretspacepagemodule.initialize = ->
     storePopup = allModules.storesecretpopupmodule
     sharePopup = allModules.sharesecretpopupmodule
     storeUnsafePopup = allModules.storeunsafepopupmodule
+    storeIdPopup = allModules.storeidpopupmodule
     removePopup = allModules.removeclientpopupmodule
 
     secretTemplate = hiddenSecretTemplate.innerHTML
@@ -86,6 +88,7 @@ secretspacepagemodule.initialize = ->
 
     copyIdButton.addEventListener("click", copyIdButtonClicked)
     qrForIdButton.addEventListener("click", qrForIdButtonClicked)
+    storeIdButton.addEventListener("click", storeIdButtonClicked)
     copySecretKeyButton.addEventListener("click", copySecretKeyButtonClicked)
     qrForSecretKeyButton.addEventListener("click", qrForSecretKeyButtonClicked)
     storeSecretKeyButton.addEventListener("click", storeSecretKeyButtonClicked)
@@ -177,6 +180,11 @@ copyIdButtonClicked = ->
 qrForIdButtonClicked = ->
     log "qrForIdButtonClicked"
     qrDisplay.displayCode(clientObject.client.publicKeyHex)
+    return
+
+storeIdButtonClicked = ->
+    log "storeIdButtonClicked"
+    storeIdPopup.storeId(clientObject.client)
     return
 
 copySecretKeyButtonClicked = ->
@@ -301,7 +309,13 @@ secretspacepagemodule.slideIn = ->
     if typeof idx != "number" then throw new Error("chosenClientIndex was not a number!")
     clientObject = secretStore.clientByIndex(idx)
     slideinModule.slideinForContentElement(secretspacepageContent)
-    currentSpace = await clientObject.client.getSecretSpace()
+
+    try currentSpace = await clientObject.client.getSecretSpace()
+    catch err
+        msgBox.error("There was an error retrieving this SecretSpace")
+        secretspacepagemodule.slideOut()
+        return
+        
     # olog currentSpace
     displayClientInformation()
     displayCurrentSecretSpace()

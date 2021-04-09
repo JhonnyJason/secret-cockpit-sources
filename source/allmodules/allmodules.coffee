@@ -26,6 +26,7 @@ import sharesecretpopupmodule from "./sharesecretpopupmodule"
 import signatureinputpagemodule from "./signatureinputpagemodule"
 import slideinframemodule from "./slideinframemodule"
 import statemodule from "./statemodule"
+import storeidpopupmodule from "./storeidpopupmodule"
 import storesecretpopupmodule from "./storesecretpopupmodule"
 import storeunsafepopupmodule from "./storeunsafepopupmodule"
 import subspacepagemodule from "./subspacepagemodule"
@@ -61,6 +62,7 @@ Modules = {
     signatureinputpagemodule,
     slideinframemodule,
     statemodule,
+    storeidpopupmodule,
     storesecretpopupmodule,
     storeunsafepopupmodule,
     subspacepagemodule,
