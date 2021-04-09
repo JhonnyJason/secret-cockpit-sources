@@ -10,8 +10,41 @@ print = (arg) -> console.log(arg)
 #endregion
 
 ############################################################
-messageboxmodule.initialize = () ->
+stayDurationMS = 5000
+
+############################################################
+messageboxmodule.initialize = ->
     log "messageboxmodule.initialize"
+    c = allModules.configmodule
+    if c.messageboxStayDurationMS? then stayDurationMS = c.messageboxStayDurationMS
     return
-    
+############################################################
+letDisappear = ->
+    log "letDisappear"
+    setTimeout(disappear, stayDurationMS)
+    return
+
+disappear = ->
+    log "disappear"
+    messagebox.textContent = ""
+    messagebox.className = "gone"
+    return    
+
+############################################################
+messageboxmodule.info = (message) ->
+    log "messageboxmodule.info"
+    return unless typeof message == "string"
+    messagebox.textContent = message
+    messagebox.className = ""
+    letDisappear()
+    return
+
+messageboxmodule.error = (message) ->
+    log "messageboxmodule.error"
+    return unless typeof message == "string"
+    messagebox.textContent = message
+    messagebox.className = "error"
+    letDisappear()
+    return
+
 module.exports = messageboxmodule

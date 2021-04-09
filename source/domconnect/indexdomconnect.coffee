@@ -2,6 +2,7 @@ indexdomconnect = {name: "indexdomconnect"}
 
 ############################################################
 indexdomconnect.initialize = () ->
+    global.messagebox = document.getElementById("messagebox")
     global.qrreaderBackground = document.getElementById("qrreader-background")
     global.qrreaderVideoElement = document.getElementById("qrreader-video-element")
     global.qrdisplayBackground = document.getElementById("qrdisplay-background")
