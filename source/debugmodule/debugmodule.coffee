@@ -22,6 +22,6 @@ debugmodule.modulesToDebug =
     # sharesecretpopupmodule: true
     # storesecretpopupmodule: true
     # storeunsafepopupmodule: true
-    # subspacepagemodule: true
+    subspacepagemodule: true
 
 export default debugmodule

@@ -16,6 +16,7 @@ mustache = require("mustache")
 ############################################################
 utl = null
 state = null
+msgBox = null
 popupModule = null
 
 #endregion
@@ -41,6 +42,7 @@ sharesecretpopupmodule.initialize = ->
     log "sharesecretpopupmodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
+    msgBox = allModules.messageboxmodule
     popupModule = allModules.popupmodule
     clientTemplate = hiddenClientsDisplayTemplate.innerHTML
 
@@ -85,8 +87,14 @@ applyShare = ->
     
     clientsList = state.get("clientsList")
     shareToId = clientsList[chosenIndex].client.publicKeyHex
-
-    await currentClient.shareSecretTo(shareToId, currentSecretId)
+    try
+        secret = await currentClient.getSecret(currentSecretId)
+        await currentClient.shareSecretTo(shareToId, currentSecretId, secret)
+    catch err
+        try await currentClient.deleteSharedSecret(shareToId, currentSecretId)
+        catch err
+        msgBox.error("Failed to share secret!")
+        log err
     return
 
 

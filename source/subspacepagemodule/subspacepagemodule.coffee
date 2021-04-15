@@ -80,8 +80,14 @@ copySecretButtonClicked = (evt) ->
     log "copySecretButtonClicked"
     setterId = state.get("chosenSubspaceId")
     secretId = getSecretId(evt.target)
-    secret = await clientObject.client.getSecretFrom(secretId, setterId)
-    utl.copyToClipboard(secret)
+    log secretId
+    log setterId
+    try 
+        secret = await clientObject.client.getSecretFrom(secretId, setterId)
+        utl.copyToClipboard(secret)
+    catch err
+        msgBox.error("Failed to retrieve the shared Secret!")
+        log err
     return
 
 storeSecretButtonClicked = (evt) ->

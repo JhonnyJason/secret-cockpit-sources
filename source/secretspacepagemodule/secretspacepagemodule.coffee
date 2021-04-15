@@ -17,6 +17,7 @@ mustache = require("mustache")
 ############################################################
 utl = null
 state = null
+msgBox = null
 aliasModule = null
 secretStore = null
 slideinModule = null
@@ -58,6 +59,7 @@ secretspacepagemodule.initialize = ->
     log "secretspacepagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
+    msgBox = allModules.messageboxmodule
     aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
