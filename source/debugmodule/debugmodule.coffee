@@ -8,20 +8,21 @@ debugmodule.initialize = () ->
 debugmodule.modulesToDebug = 
     unbreaker: true
     # aliaspagemodule: true
+    addsecretpopupmodule: true
     # addsubspacepopupmodule: true
     # clientstoremodule: true
     # configmodule: true
-    # editsecretpopupmodule: true
+    editsecretpopupmodule: true
     # idaliasmodule: true
     # qrdisplaymodule: true
     # qrreadermodule: true
     # unsafeinputpagemodule: true
     # floatinginputpagemodule: true
     # clientsdisplaymodule: true
-    # secretspacepagemodule: true
+    secretspacepagemodule: true
     # sharesecretpopupmodule: true
     # storesecretpopupmodule: true
     # storeunsafepopupmodule: true
-    subspacepagemodule: true
+    # subspacepagemodule: true
 
 export default debugmodule

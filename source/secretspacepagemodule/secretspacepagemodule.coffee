@@ -318,7 +318,8 @@ secretspacepagemodule.slideIn = ->
         secretspacepagemodule.slideOut()
         return
         
-    # olog currentSpace
+    olog currentSpace
+    
     displayClientInformation()
     displayCurrentSecretSpace()
     displaySubspaces()

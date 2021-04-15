@@ -36,6 +36,7 @@ applyEdit = ->
     if newSecretId != currentSecretId then currentClient.deleteSecret(currentSecretId)
 
     newSecret = editSecretLine.textContent
+
     if newSecret != currentSecret then await currentClient.setSecret(newSecretId, newSecret)
     secretSpacePage.slideIn()
     return
@@ -44,6 +45,7 @@ applyEdit = ->
 ############################################################
 editsecretpopupmodule.editSecret = (client, secretId) ->
     log "editsecretpopupmodule.editSecret"
+    log secretId
     currentSecret = await client.getSecret(secretId)
     currentClient = client
     currentSecretId = secretId

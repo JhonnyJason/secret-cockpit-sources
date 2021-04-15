@@ -32,6 +32,10 @@ applyAdd = ->
     secretId = addSecretIdLine.textContent
     if !secretId then return
     secret = addSecretLine.textContent
+    
+    # log secretId
+    # log secret
+    # return
 
     await currentClient.setSecret(secretId, secret)
     secretSpacePage.slideIn()
