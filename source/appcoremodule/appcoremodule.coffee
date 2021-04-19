@@ -32,8 +32,8 @@ appcoremodule.startUp = ->
     return
 
     url = state.get("secretManagerURL")
-    mockedSecret = "e1400aa698ca52b67510a0b7a22daef4bac99807b511cd2508689064154b5c29"
-    client = await clientFactory.createClient(mockedSecret, null, url)
+    mockedKey = "e1400aa698ca52b67510a0b7a22daef4bac99807b511cd2508689064154b5c29"
+    client = await clientFactory.createClient(mockedKey, null, url)
 
     clientStore.storeNewClient(client, "unsafe")
 

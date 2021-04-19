@@ -32,7 +32,7 @@ utilmodule.idOrAlias = (id) ->
     else return utilmodule.add0x(id)
 
 ############################################################
-utilmodule.seedToSecret = (seed) ->
+utilmodule.seedToKey = (seed) ->
     hashHex = await secUtl.sha512Hex(seed)
     shift = parseInt(hashHex[0], 16) * 2
     return hashHex.substr(shift, 64)

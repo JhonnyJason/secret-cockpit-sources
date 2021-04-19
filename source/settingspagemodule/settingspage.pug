@@ -7,22 +7,32 @@ block content
         input#secret-manager-input(type="text")
         h2 Data Manager Service 
         input#data-manager-input(type="text")
-        h2 Secret Types to Store Unsafe Secrets
-        label(for="allow-unsafe-input") Store in Unsafe Secrets
-        input#store-in-unsafe-input(type="checkbox" value="protected")
-        label(for="allow-unsafe-input") Store in Floating Secrets
-        input#store-in-floating-input(type="checkbox" value="protected")
-        label(for="allow-unsafe-input") Store in Signature Secrets
-        input#store-in-signature-input(type="checkbox" value="protected")
-        h2 Floating Secret - Keylogger Protection
-        label(for="keylogger-protection-input") Protect
-        input#keylogger-protection-input(type="checkbox" value="protected")
-        h2 Store Unsafe Secrets in Local Storage
-        label(for="store-unsafe-input") Store
-        input#store-unsafe-input(type="checkbox" value="protected")
-        h2 Autodetect Unsafe Secrets
-        label(for="autodetect-unsafe-input") Autodetect
-        input#autodetect-unsafe-input(type="checkbox" value="protected")
-        h2 Secret Identifying Ending
+        h2 Key Types having permission to Store Unsafe Keys
+        .settings-subsection
+            .subsection-line
+                label(for="allow-unsafe-input")  Unsafe Key
+                input#store-in-unsafe-input(type="checkbox" value="protected")
+            .subsection-line
+                label(for="allow-unsafe-input") Floating Key
+                input#store-in-floating-input(type="checkbox" value="protected")
+            .subsection-line
+                label(for="allow-unsafe-input") Signature Key
+                input#store-in-signature-input(type="checkbox" value="protected")
+        h2 Floating Key - Keylogger Protection
+        .settings-subsection
+            .subsection-line
+                label(for="keylogger-protection-input") Protect
+                input#keylogger-protection-input(type="checkbox" value="protected")
+        h2 Store Unsafe Keys in LocalStorage
+        .settings-subsection
+            .subsection-line
+                label(for="store-unsafe-input") Store
+                input#store-unsafe-input(type="checkbox" value="protected")
+        h2 Autodetect Unsafe Keys
+        .settings-subsection
+            .subsection-line
+                label(for="autodetect-unsafe-input") Autodetect
+                input#autodetect-unsafe-input(type="checkbox" value="protected")
+        h2 Key Identifying Ending
         input#identifying-ending-input(type="text")
         

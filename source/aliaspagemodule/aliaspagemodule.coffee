@@ -17,6 +17,7 @@ mustache = require("mustache")
 aliasModule = null
 utl = null
 state = null
+addAliasPopup = null
 slideinModule = null
 
 #endregion
@@ -31,6 +32,7 @@ aliaspagemodule.initialize = ->
     utl = allModules.utilmodule
     state = allModules.statemodule
     aliasModule = allModules.idaliasmodule
+    addAliasPopup = allModules.addaliaspopupmodule
     slideinModule = allModules.slideinframemodule
 
     aliasTemplate = hiddenAliasTemplate.innerHTML
@@ -38,6 +40,7 @@ aliaspagemodule.initialize = ->
     # aliaspageContent.
     slideinModule.wireUp(aliaspageContent, clearContent, applyContent)
 
+    addAliasButton.addEventListener("click", addAliasButtonClicked)
     return
     
 ############################################################
@@ -78,6 +81,11 @@ syncAliasesToState = ->
     aliasModule.applyAliases(aliasPairs)
     return
 
+############################################################
+addAliasButtonClicked = ->
+    log "addAliasButtonClicked"
+    addAliasPopup.addAlias()
+    return
 
 ############################################################
 clearContent = ->

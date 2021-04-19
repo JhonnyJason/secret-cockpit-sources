@@ -18,7 +18,7 @@ utl = null
 
 ############################################################
 template = null
-emptyContainerElement ="<p>No Known Secret Client here :-)</p>"
+emptyContainerElement ="<p>No Known Account here :-)</p>"
 
 ############################################################
 clientsdisplaymodule.initialize = ->

@@ -1,7 +1,9 @@
+import addaliaspopupmodule from "./addaliaspopupmodule"
 import addsecretpopupmodule from "./addsecretpopupmodule"
 import addsubspacepopupmodule from "./addsubspacepopupmodule"
 import aliaspagemodule from "./aliaspagemodule"
 import appcoremodule from "./appcoremodule"
+import autodetectkeysmodule from "./autodetectkeysmodule"
 import clientsdisplaymodule from "./clientsdisplaymodule"
 import clientstoremodule from "./clientstoremodule"
 import configmodule from "./configmodule"
@@ -34,10 +36,12 @@ import unsafeinputpagemodule from "./unsafeinputpagemodule"
 import utilmodule from "./utilmodule"
 
 Modules = {
+    addaliaspopupmodule,
     addsecretpopupmodule,
     addsubspacepopupmodule,
     aliaspagemodule,
     appcoremodule,
+    autodetectkeysmodule,
     clientsdisplaymodule,
     clientstoremodule,
     configmodule,

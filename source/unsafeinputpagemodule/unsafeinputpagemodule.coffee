@@ -16,7 +16,8 @@ clientFactory  = require("secret-manager-client")
 ############################################################
 utl = null
 state = null
-secretStore = null
+clientStore = null
+autoDetect = null
 slideinModule = null
 qrReader = null
 
@@ -30,7 +31,8 @@ unsafeinputpagemodule.initialize = ->
     log "unsafeinputpagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.clientstoremodule
+    clientStore = allModules.clientstoremodule
+    autoDetect = allModules.autodetectkeysmodule
     slideinModule = allModules.slideinframemodule
     qrReader = allModules.qrreadermodule
 
@@ -40,7 +42,7 @@ unsafeinputpagemodule.initialize = ->
     createUnsafeButton.addEventListener("click", createUnsafeButtonClicked)
     scanQrButton.addEventListener("click", scanQrButtonClicked)
 
-    unsafeSecretInput.addEventListener("change", secretInputChanged)
+    unsafeKeyInput.addEventListener("change", secretInputChanged)
     return
 
 ############################################################
@@ -52,7 +54,7 @@ createUnsafeButtonClicked = ->
         currentClient = await clientFactory.createClient(null, null, url)
         key = utl.add0x(currentClient.secretKeyHex)
         id = utl.add0x(currentClient.publicKeyHex)
-        unsafeSecretInput.value = key
+        unsafeKeyInput.value = key
         unsafeIdLine.textContent = id
     catch err then log err
     return
@@ -66,7 +68,7 @@ scanQrButtonClicked = ->
         currentClient = await clientFactory.createClient(data, null, url)
         key = utl.add0x(currentClient.secretKeyHex)
         id = utl.add0x(currentClient.publicKeyHex)
-        unsafeSecretInput.value = key
+        unsafeKeyInput.value = key
         unsafeIdLine.textContent = id
     catch err then log err
     return
@@ -74,12 +76,12 @@ scanQrButtonClicked = ->
 secretInputChanged = ->
     log "secretInputChanged"
     url = state.get("secretManagerURL")
-    secret = utl.strip0x(unsafeSecretInput.value)
+    key = utl.strip0x(unsafeKeyInput.value)
     try
-        currentClient = await clientFactory.createClient(secret, null, url)
+        currentClient = await clientFactory.createClient(key, null, url)
         key = utl.add0x(currentClient.secretKeyHex)
         id = utl.add0x(currentClient.publicKeyHex)
-        unsafeSecretInput.value = key
+        unsafeKeyInput.value = key
         unsafeIdLine.textContent = id
     catch err then log err
     return
@@ -87,14 +89,15 @@ secretInputChanged = ->
 ############################################################
 clearContent = ->
     log "clearContent"
-    unsafeSecretInput.value = "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
+    unsafeKeyInput.value = "0xdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef"
     unsafeIdLine.textContent = ""
     currentClient = null
     return
 
 applyContent = ->
     log "applyContent"
-    secretStore.storeNewClient(currentClient, "unsafe")
+    clientStore.storeNewClient(currentClient, "unsafe")
+    autoDetect.detectFor(currentClient)
     clearContent()
     return
 

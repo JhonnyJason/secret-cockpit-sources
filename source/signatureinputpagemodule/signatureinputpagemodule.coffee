@@ -29,7 +29,7 @@ signatureinputpagemodule.initialize = ->
 #region internalFunctions
 clearContent = ->
     log "clearContent"
-    signatureSecretInput.value = "I am a funny seed :-)"
+    signatureKeyInput.value = "I am a funny seed message :-)"
     return
 
 applyContent = ->

@@ -16,7 +16,8 @@ clientFactory  = require("secret-manager-client")
 ############################################################
 utl = null
 state = null
-secretStore = null
+clientStore = null
+autoDetect = null
 slideinModule = null
 
 #endregion
@@ -29,12 +30,13 @@ floatinginputpagemodule.initialize = () ->
     log "floatinginputpagemodule.initialize"
     utl = allModules.utilmodule
     state = allModules.statemodule
-    secretStore = allModules.clientstoremodule
+    autoDetect = allModules.autodetectkeysmodule
+    clientStore = allModules.clientstoremodule
     slideinModule = allModules.slideinframemodule
     # floatinginputpageContent.
     
     slideinModule.wireUp(floatinginputpageContent, clearContent, applyContent)
-    floatingSecretInput.addEventListener("change", secretInputChanged)
+    floatingKeyInput.addEventListener("change", secretInputChanged)
     return
 
 ############################################################
@@ -42,10 +44,10 @@ floatinginputpagemodule.initialize = () ->
 secretInputChanged = ->
     log "secretInputChanged"
     url = state.get("secretManagerURL")
-    seed = floatingSecretInput.value
-    secret = await utl.seedToSecret(seed)
+    seed = floatingKeyInput.value
+    key = await utl.seedToKey(seed)
     try
-        currentClient = await clientFactory.createClient(secret, null, url)
+        currentClient = await clientFactory.createClient(key, null, url)
         key = utl.add0x(currentClient.secretKeyHex)
         id = utl.add0x(currentClient.publicKeyHex)
         floatingIdLine.textContent = id
@@ -56,14 +58,15 @@ secretInputChanged = ->
 ############################################################
 clearContent = ->
     log "clearContent"
-    floatingSecretInput.value = ""
+    floatingKeyInput.value = ""
     floatingIdLine.textContent = ""
     currentClient = null
     return
 
 applyContent = ->
     log "applyContent"
-    secretStore.storeNewClient(currentClient, "floating")
+    clientStore.storeNewClient(currentClient, "floating")
+    autoDetect.detectFor(currentClient)
     clearContent()
     return
 

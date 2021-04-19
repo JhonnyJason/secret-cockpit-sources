@@ -56,11 +56,15 @@ idaliasmodule.updateAlias = (alias, id) ->
 idaliasmodule.applyAliases = (idAliasList) ->
     log "idaliasmodule.applyAliases"
     for pair in idAliasList
-        oldAlias = idToAlias[pair.id] 
+        oldAlias = idToAlias[pair.id]
+        # log "- - -"
+        # log pair.id
+        # log oldAlias
         delete idToAlias[pair.id]
 
         if !pair.alias then delete aliasToId[oldAlias]
         else
+            # log pair.alias
             aliasToId[pair.alias] = pair.id
             idToAlias[pair.id] = pair.alias
     
