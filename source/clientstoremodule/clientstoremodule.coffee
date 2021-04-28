@@ -130,6 +130,10 @@ clientstoremodule.clientByIndex = (index) ->
     log "clientstoremodule.clientByIndex"
     return clientsList[index]
 
+clientstoremodule.clientById = (id) ->
+    log "clientstoremodule.clientById"
+    return idToObjMap[id]
+    
 #endregion
 
 module.exports = clientstoremodule

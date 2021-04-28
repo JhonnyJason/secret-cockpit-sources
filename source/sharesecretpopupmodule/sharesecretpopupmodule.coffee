@@ -18,6 +18,8 @@ utl = null
 state = null
 msgBox = null
 popupModule = null
+clientStore = null
+aliasModule = null
 
 #endregion
 
@@ -29,7 +31,8 @@ currentSecretId = null
 
 ############################################################
 chosenIndex = null
-clientElements = null
+allIds = null
+idElements = null
 
 ############################################################
 clientTemplate = null
@@ -44,6 +47,8 @@ sharesecretpopupmodule.initialize = ->
     state = allModules.statemodule
     msgBox = allModules.messageboxmodule
     popupModule = allModules.popupmodule
+    clientStore = allModules.clientstoremodule
+    aliasModule = allModules.idaliasmodule
     clientTemplate = hiddenClientsDisplayTemplate.innerHTML
 
     #sharesecretPopup.
@@ -58,25 +63,59 @@ displayShareOptions = ->
     log "displayShareOptions"
     sharesecretToIdLine.value = ""
     optionsContent = ""
+    allIds = aliasModule.getAllIds()
+    allIds = [] unless allIds.length?
     clientsList = state.get("clientsList")
-    return unless clientsList?
+    
+    for client in clientsList
+        clientId = client.client.publicKeyHex
+        allIds.push(clientId) unless allIds.includes(clientId)
+
+    # olog allIds
+
+    return unless allIds.length > 0
 
     cObj = {}
     count = 0
-    for obj,i in clientsList
+    for id,i in allIds
         cObj.index = i
-        cObj.type = obj.type
-        cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
+        cObj.label = utl.idOrAlias(id)
+        client = clientStore.clientById(id) 
+        if client? then cObj.type = client.type
+        else cObj.type = ""
         optionsContent += mustache.render(clientTemplate, cObj)
         count++
     
     if !optionsContent then sharesecretOptionsContainer.innerHTML = noshareOptionsLine
     else sharesecretOptionsContainer.innerHTML = optionsContent
 
-    clientElements = sharesecretOptionsContainer.getElementsByClassName("clients-display")
-    el.addEventListener("click", clientOptionClicked) for el in clientElements
+    idElements = sharesecretOptionsContainer.getElementsByClassName("clients-display")
+    el.addEventListener("click", clientOptionClicked) for el in idElements
 
-    if count ==  1 then selectClientFor(clientElements[0])
+    if count ==  1 then selectClientFor(idElements[0])
+
+    # #old code
+    # sharesecretToIdLine.value = ""
+    # optionsContent = ""
+    # clientsList = state.get("clientsList")
+    # return unless clientsList?
+
+    # cObj = {}
+    # count = 0
+    # for obj,i in clientsList
+    #     cObj.index = i
+    #     cObj.type = obj.type
+    #     cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
+    #     optionsContent += mustache.render(clientTemplate, cObj)
+    #     count++
+    
+    # if !optionsContent then sharesecretOptionsContainer.innerHTML = noshareOptionsLine
+    # else sharesecretOptionsContainer.innerHTML = optionsContent
+
+    # clientElements = sharesecretOptionsContainer.getElementsByClassName("clients-display")
+    # el.addEventListener("click", clientOptionClicked) for el in clientElements
+
+    # if count ==  1 then selectClientFor(clientElements[0])
     return
 
 
@@ -85,8 +124,7 @@ applyShare = ->
     log "applyShare"
     return unless chosenIndex?
     
-    clientsList = state.get("clientsList")
-    shareToId = clientsList[chosenIndex].client.publicKeyHex
+    shareToId = allIds[chosenIndex]
     try
         secret = await currentClient.getSecret(currentSecretId)
         await currentClient.shareSecretTo(shareToId, currentSecretId, secret)
@@ -123,15 +161,15 @@ clientOptionClicked = (evt) ->
 
 selectClientFor = (el) ->
     log "selectClientFor"
-    chosenClientIndex = null
-    client.classList.remove("selected") for client in clientElements
+    chosenIndex = null
+    idEl.classList.remove("selected") for idEl in idElements
     return unless el?
+
     chosenIndex = parseInt(el.getAttribute("list-index"))
     el.classList.add("selected")
 
-    clientsList = state.get("clientsList")
-    shareClient = clientsList[chosenIndex].client
-    sharesecretToIdLine.value = utl.add0x(shareClient.publicKeyHex)
+    id = allIds[chosenIndex]
+    sharesecretToIdLine.value = utl.add0x(id)
     return
 
 #endregion
