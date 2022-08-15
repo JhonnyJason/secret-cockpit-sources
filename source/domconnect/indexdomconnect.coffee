@@ -75,8 +75,6 @@ indexdomconnect.initialize = () ->
     global.qrForSecretKeyButton = document.getElementById("qr-for-secret-key-button")
     global.storeSecretKeyButton = document.getElementById("store-secret-key-button")
     global.removeClientButton = document.getElementById("remove-client-button")
-    global.signatureinputpageContent = document.getElementById("signatureinputpage-content")
-    global.signatureKeyInput = document.getElementById("signature-key-input")
     global.floatinginputpageContent = document.getElementById("floatinginputpage-content")
     global.floatingKeyInput = document.getElementById("floating-key-input")
     global.floatingIdLine = document.getElementById("floating-id-line")
@@ -90,7 +88,6 @@ indexdomconnect.initialize = () ->
     global.dataManagerInput = document.getElementById("data-manager-input")
     global.storeInUnsafeInput = document.getElementById("store-in-unsafe-input")
     global.storeInFloatingInput = document.getElementById("store-in-floating-input")
-    global.storeInSignatureInput = document.getElementById("store-in-signature-input")
     global.keyloggerProtectionInput = document.getElementById("keylogger-protection-input")
     global.storeUnsafeInput = document.getElementById("store-unsafe-input")
     global.autodetectUnsafeInput = document.getElementById("autodetect-unsafe-input")
@@ -101,7 +98,6 @@ indexdomconnect.initialize = () ->
     global.aliasPageButton = document.getElementById("alias-page-button")
     global.inputUnsafeButton = document.getElementById("input-unsafe-button")
     global.inputFloatingButton = document.getElementById("input-floating-button")
-    global.inputSignatureButton = document.getElementById("input-signature-button")
     global.headerRight = document.getElementById("header-right")
     return
     

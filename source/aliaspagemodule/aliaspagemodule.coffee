@@ -1,24 +1,19 @@
-aliaspagemodule = {name: "aliaspagemodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["aliaspagemodule"]?  then console.log "[aliaspagemodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("aliaspagemodule")
 #endregion
 
 ############################################################
 #region localModules
-mustache = require("mustache")
+import M from "mustache"
 
 ############################################################
-aliasModule = null
-utl = null
-state = null
-addAliasPopup = null
-slideinModule = null
+import * as aliasModule from  "./idaliasmodule.js"
+import * as utl from "./utilsmodule.js"
+import * as state from "./statemodule.js"
+import * as addAliasPopup from "./addaliaspopupmodule.js"
+import * as slideinModule from "./slideinframemodule.js"
 
 #endregion
 
@@ -27,14 +22,8 @@ aliasTemplate = null
 noIdsElement = "<p>No Ids available yet :-)</p>"
 
 ############################################################
-aliaspagemodule.initialize = ->
-    log "aliaspagemodule.initialize"
-    utl = allModules.utilmodule
-    state = allModules.statemodule
-    aliasModule = allModules.idaliasmodule
-    addAliasPopup = allModules.addaliaspopupmodule
-    slideinModule = allModules.slideinframemodule
-
+export initialize = ->
+    log "initialize"
     aliasTemplate = hiddenAliasTemplate.innerHTML
 
     # aliaspageContent.
@@ -101,17 +90,13 @@ applyContent = ->
 
 ############################################################
 #region exposedFunctions
-aliaspagemodule.slideOut = ->
+export slideOut = ->
     log "aliaspagemodule.slideOut"
     slideinModule.slideoutForContentElement(aliaspageContent)
     return
 
-aliaspagemodule.slideIn = ->
+export slideIn = ->
     log "aliaspagemodule.slideIn"
     syncAliasesFromState()
     slideinModule.slideinForContentElement(aliaspageContent)
     return
-
-#endregion
-
-module.exports = aliaspagemodule

@@ -3,7 +3,6 @@ defaultstate =
     dataManagerURL: "https://data.extensivlyon.coffee"
     storeUnsafeInUnsafe: false
     storeUnsafeInFloating: true
-    storeUnsafeInSignature: true
     keyloggerProtection: false
     storeUnsafeInLocalStorage: false
     autodetectStoredSecrets: true

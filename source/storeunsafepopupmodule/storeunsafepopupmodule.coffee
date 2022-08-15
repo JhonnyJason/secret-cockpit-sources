@@ -57,7 +57,6 @@ displayStoreOptions = ->
 
     inUnsafe = state.get("storeUnsafeInUnsafe")
     inFloating = state.get("storeUnsafeInFloating")
-    inSignature = state.get("storeUnsafeInSignature")
 
     cObj = {}
     count = 0
@@ -65,7 +64,7 @@ displayStoreOptions = ->
         switch obj.type
             when "unsafe" then continue unless inUnsafe
             when "floating" then continue unless inFloating
-            when "signature" then continue unless inSignature
+
         cObj.index = i
         cObj.type = obj.type
         cObj.label = utl.idOrAlias(obj.client.publicKeyHex)

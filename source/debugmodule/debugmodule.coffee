@@ -1,11 +1,7 @@
-debugmodule = {name: "debugmodule", uimodule: false}
+import { addModulesToDebug } from "thingy-debug"
 
-#####################################################
-debugmodule.initialize = () ->
-    # console.log "debugmodule.initialize - nothing to do"
-    return
-
-debugmodule.modulesToDebug = 
+############################################################
+export modulesToDebug = 
     unbreaker: true
     # aliaspagemodule: true
     # addaliaspopupmodule: true
@@ -27,4 +23,4 @@ debugmodule.modulesToDebug =
     # storeunsafepopupmodule: true
     # subspacepagemodule: true
 
-export default debugmodule
+addModulesToDebug(modulesToDebug)

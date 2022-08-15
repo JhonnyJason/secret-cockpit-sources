@@ -1,27 +1,21 @@
-addsecretpopupmodule = {name: "addsecretpopupmodule"}
+
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["addsecretpopupmodule"]?  then console.log "[addsecretpopupmodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("addsecretpopupmodule")
 #endregion
 
 ############################################################
-popupModule = null
-secretSpacePage = null
+import * as popupModule from "./popupmodule.js"
+import * as secretSpacePage from "./secretspacepagemodule.js"
 
 ############################################################
 currentClient = null
 
 ############################################################
-addsecretpopupmodule.initialize = ->
-    log "addsecretpopupmodule.initialize"
-    popupModule = allModules.popupmodule
-    secretSpacePage = allModules.secretspacepagemodule
-
+export initialize = ->
+    log "initialize"
+    
     #addsecretPopup.
     popupModule.wireUp(addsecretPopup, applyAdd)
     return
@@ -42,14 +36,11 @@ applyAdd = ->
     return
 
 ############################################################
-addsecretpopupmodule.addSecret = (client) ->
-    log "addsecretpopupmodule.addSecret"
+export addSecret = (client) ->
+    log "addSecret"
     currentClient = client
 
     addSecretIdLine.textContent = ""
     addSecretLine.textContent = ""
     popupModule.popupForContentElement(addsecretPopup)
     return
-
-    
-module.exports = addsecretpopupmodule

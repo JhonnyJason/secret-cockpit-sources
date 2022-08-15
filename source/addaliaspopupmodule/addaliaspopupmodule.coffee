@@ -1,27 +1,21 @@
-addaliaspopupmodule = {name: "addaliaspopupmodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["addaliaspopupmodule"]?  then console.log "[addaliaspopupmodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("addaliaspopupmodule")
 #endregion
 
 ############################################################
-utl = null
-aliasModule = null
-popupModule = null
-aliasPage = null
+#region imports
+import * as utl from "./utilsmodule.js"
+import * as aliasModule from "./idaliasmodule.js"
+import * as popupModule from "./popupmodule.js"
+import * as aliasPage from "./aliaspagemodule.js"
+
+#endregion
 
 ############################################################
-addaliaspopupmodule.initialize = ->
-    log "addaliaspopupmodule.initialize"
-    utl = allModules.utilmodule
-    aliasModule = allModules.idaliasmodule
-    popupModule = allModules.popupmodule
-    aliasPage = allModules.aliaspagemodule
+export initialize = ->
+    log "initialize"
 
     #addaliasPopup.
     popupModule.wireUp(addaliasPopup, applyAdd)
@@ -42,7 +36,7 @@ applyAdd = ->
     return
 
 ############################################################
-addaliaspopupmodule.addAlias = ->
+export addAlias = ->
     log "addaliaspopupmodule.addSecret"
     addAliasIdLine.textContent = ""
     addAliasLine.textContent = ""
@@ -50,4 +44,3 @@ addaliaspopupmodule.addAlias = ->
     return
 
     
-module.exports = addaliaspopupmodule

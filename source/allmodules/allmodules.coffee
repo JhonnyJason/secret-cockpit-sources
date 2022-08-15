@@ -1,39 +1,38 @@
-import addaliaspopupmodule from "./addaliaspopupmodule"
-import addsecretpopupmodule from "./addsecretpopupmodule"
-import addsubspacepopupmodule from "./addsubspacepopupmodule"
-import aliaspagemodule from "./aliaspagemodule"
-import appcoremodule from "./appcoremodule"
-import autodetectkeysmodule from "./autodetectkeysmodule"
-import clientsdisplaymodule from "./clientsdisplaymodule"
-import clientstoremodule from "./clientstoremodule"
-import configmodule from "./configmodule"
-import debugmodule from "./debugmodule"
-import deletesecretpopupmodule from "./deletesecretpopupmodule"
-import deletesubspacepopupmodule from "./deletesubspacepopupmodule"
-import editsecretpopupmodule from "./editsecretpopupmodule"
-import floatinginputpagemodule from "./floatinginputpagemodule"
-import footermodule from "./footermodule"
-import headermodule from "./headermodule"
-import idaliasmodule from "./idaliasmodule"
-import inputchoicesectionmodule from "./inputchoicesectionmodule"
-import messageboxmodule from "./messageboxmodule"
-import popupmodule from "./popupmodule"
-import qrdisplaymodule from "./qrdisplaymodule"
-import qrreadermodule from "./qrreadermodule"
-import removeclientpopupmodule from "./removeclientpopupmodule"
-import secretspacedisplaymodule from "./secretspacedisplaymodule"
-import secretspacepagemodule from "./secretspacepagemodule"
-import settingspagemodule from "./settingspagemodule"
-import sharesecretpopupmodule from "./sharesecretpopupmodule"
-import signatureinputpagemodule from "./signatureinputpagemodule"
-import slideinframemodule from "./slideinframemodule"
-import statemodule from "./statemodule"
-import storeidpopupmodule from "./storeidpopupmodule"
-import storesecretpopupmodule from "./storesecretpopupmodule"
-import storeunsafepopupmodule from "./storeunsafepopupmodule"
-import subspacepagemodule from "./subspacepagemodule"
-import unsafeinputpagemodule from "./unsafeinputpagemodule"
-import utilmodule from "./utilmodule"
+import * as addaliaspopupmodule from "./addaliaspopupmodule.js"
+import * as addsecretpopupmodule from "./addsecretpopupmodule.js"
+import * as addsubspacepopupmodule from "./addsubspacepopupmodule.js"
+import * as aliaspagemodule from "./aliaspagemodule.js"
+import * as appcoremodule from "./appcoremodule.js"
+import * as autodetectkeysmodule from "./autodetectkeysmodule.js"
+import * as clientsdisplaymodule from "./clientsdisplaymodule.js"
+import * as clientstoremodule from "./clientstoremodule.js"
+import * as configmodule from "./configmodule.js"
+import * as debugmodule from "./debugmodule.js"
+import * as deletesecretpopupmodule from "./deletesecretpopupmodule.js"
+import * as deletesubspacepopupmodule from "./deletesubspacepopupmodule.js"
+import * as editsecretpopupmodule from "./editsecretpopupmodule.js"
+import * as floatinginputpagemodule from "./floatinginputpagemodule.js"
+import * as footermodule from "./footermodule.js"
+import * as headermodule from "./headermodule.js"
+import * as idaliasmodule from "./idaliasmodule.js"
+import * as inputchoicesectionmodule from "./inputchoicesectionmodule.js"
+import * as messageboxmodule from "./messageboxmodule.js"
+import * as popupmodule from "./popupmodule.js"
+import * as qrdisplaymodule from "./qrdisplaymodule.js"
+import * as qrreadermodule from "./qrreadermodule.js"
+import * as removeclientpopupmodule from "./removeclientpopupmodule.js"
+import * as secretspacedisplaymodule from "./secretspacedisplaymodule.js"
+import * as secretspacepagemodule from "./secretspacepagemodule.js"
+import * as settingspagemodule from "./settingspagemodule.js"
+import * as sharesecretpopupmodule from "./sharesecretpopupmodule.js"
+import * as slideinframemodule from "./slideinframemodule.js"
+import * as statemodule from "./statemodule.js"
+import * as storeidpopupmodule from "./storeidpopupmodule.js"
+import * as storesecretpopupmodule from "./storesecretpopupmodule.js"
+import * as storeunsafepopupmodule from "./storeunsafepopupmodule.js"
+import * as subspacepagemodule from "./subspacepagemodule.js"
+import * as unsafeinputpagemodule from "./unsafeinputpagemodule.js"
+import * as utilsmodule from "./utilsmodule.js"
 
 Modules = {
     addaliaspopupmodule,
@@ -63,7 +62,6 @@ Modules = {
     secretspacepagemodule,
     settingspagemodule,
     sharesecretpopupmodule,
-    signatureinputpagemodule,
     slideinframemodule,
     statemodule,
     storeidpopupmodule,
@@ -71,7 +69,7 @@ Modules = {
     storeunsafepopupmodule,
     subspacepagemodule,
     unsafeinputpagemodule,
-    utilmodule,
+    utilsmodule,
 }
 
 export default Modules

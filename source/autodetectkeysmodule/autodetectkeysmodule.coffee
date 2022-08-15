@@ -1,37 +1,22 @@
-autodetectkeysmodule = {name: "autodetectkeysmodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["autodetectkeysmodule"]?  then console.log "[autodetectkeysmodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("autodetectkeysmodule")
 #endregion
 
 
 ############################################################
 #region localModules
-clientFactory  = require("secret-manager-client")
+import * as clientFactory from "secret-manager-client"
 
 ############################################################
-utl = null
-state = null
-aliasModule = null
-clientStore = null
+import * as utl from "./utilsmodule.js"
+import * as state from "./statemodule.js"
+import * as aliasModule from "./idaliasmodule.js"
+import * as clientStore from "./clientstoremodule.js"
 
 baseClient = null
 #endregion
-
-############################################################
-autodetectkeysmodule.initialize = ->
-    log "autodetectkeysmodule.initialize"
-    utl = allModules.utilmodule
-    state = allModules.statemodule
-    aliasModule = allModules.idaliasmodule
-    clientStore = allModules.clientstoremodule
-
-    return
 
 ############################################################
 importKeyForLabel = (label) ->
@@ -54,8 +39,8 @@ importKeyForLabel = (label) ->
     return
 
 ############################################################
-autodetectkeysmodule.detectFor  = (client) ->
-    log "autodetectkeysmodule.detectFor"
+export detectFor  = (client) ->
+    log "detectFor"
     return unless state.get("autodetectStoredSecrets")
     try
         baseClient = client
@@ -70,5 +55,3 @@ autodetectkeysmodule.detectFor  = (client) ->
     catch err
         log err
     return
-
-module.exports = autodetectkeysmodule

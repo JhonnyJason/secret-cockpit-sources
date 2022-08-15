@@ -1,21 +1,13 @@
-popupmodule = {name: "popupmodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["popupmodule"]?  then console.log "[popupmodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("popupmodule")
 #endregion
 
 ############################################################
-popupmodule.initialize = ->
-    log "popupmodule.initialize"
-    return
+#region internalFunctions
 
 ############################################################
-#region internalFunctions
 popup = (frame) ->
     log "popup"
     frame.classList.add("active")
@@ -53,14 +45,13 @@ getCancelButtonForContentElement = (contentElement) ->
 #endregion
 
 ############################################################
-#region exposedFunctions
-popupmodule.popupForContentElement = (contentElement) ->
+export popupForContentElement = (contentElement) ->
     log "popupmodule.popupForContentElement"
     frame = getPopupFrameForContentElement(contentElement)
     popup(frame)
     return
 
-popupmodule.wireUp = (contentElement, applyFunction) ->
+export wireUp = (contentElement, applyFunction) ->
     log "popupmodule.popupForContentElement"
     frame = getPopupFrameForContentElement(contentElement)
     acceptButton = getAcceptButtonForContentElement(contentElement)
@@ -80,6 +71,3 @@ popupmodule.wireUp = (contentElement, applyFunction) ->
     clickCatcher.addEventListener("click", cancelFunction)
     return
 
-#endregion
-
-module.exports = popupmodule

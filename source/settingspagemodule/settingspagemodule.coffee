@@ -50,7 +50,6 @@ markAllSettingsAsRegularState = ->
     
     state.save("storeUnsafeInUnsafe", state.load("storeUnsafeInUnsafe"))
     state.save("storeUnsafeInFloating", state.load("storeUnsafeInFloating"))
-    state.save("storeUnsafeInSignature", state.load("storeUnsafeInSignature"))
     
     state.save("keyloggerProtection", state.load("keyloggerProtection"))
     
@@ -71,8 +70,6 @@ syncSettingsFromState = ->
     storeInUnsafeInput.checked = storeUnsafeInUnsafe
     storeUnsafeInFloating = state.load("storeUnsafeInFloating")
     storeInFloatingInput.checked = storeUnsafeInFloating
-    storeUnsafeInSignature = state.load("storeUnsafeInSignature")
-    storeInSignatureInput.checked = storeUnsafeInSignature
 
     keyloggerProtection = state.load("keyloggerProtection")
     keyloggerProtectionInput.checked = keyloggerProtection

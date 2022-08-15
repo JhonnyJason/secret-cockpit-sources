@@ -1,30 +1,19 @@
-appcoremodule = {name: "appcoremodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["appcoremodule"]?  then console.log "[appcoremodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("appcoremodule")
 #endregion
 
 ############################################################
-clientFactory  = require("secret-manager-client")
+import * as clientFactory from "secret-manager-client"
 
 ############################################################
-state = null
-clientStore = null
+import *  as state from "./statemodule.js"
+import *  as clientStore from "./clientstoremodule.js"
+
 
 ############################################################
-appcoremodule.initialize = ->
-    log "appcoremodule.initialize"
-    state = allModules.statemodule
-    clientStore = allModules.clientstoremodule
-    return
-
-############################################################
-appcoremodule.startUp = ->
+export startUp = ->
     log "appcoremodule.startUp"
     # allModules.aliaspagemodule.slideIn()
     return
@@ -41,5 +30,3 @@ appcoremodule.startUp = ->
     allModules.secretspacepagemodule.slideIn()
     return
     
-
-module.exports = appcoremodule

@@ -1,30 +1,26 @@
-clientsdisplaymodule = {name: "clientsdisplaymodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["clientsdisplaymodule"]?  then console.log "[clientsdisplaymodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("clientsdisplaymodule")
 #endregion
 
 ############################################################
-mustache = require("mustache")
+#region imports
+import M from "mustache"
 
 ############################################################
-state = null
-utl = null
+import * as state from "./statemodule.js"
+import * as utl from "./utilsmodule.js"
+
+#endregion
 
 ############################################################
 template = null
 emptyContainerElement ="<p>No Known Account here :-)</p>"
 
 ############################################################
-clientsdisplaymodule.initialize = ->
+export initialize = ->
     log "clientsdisplaymodule.initialize"
-    utl = allModules.utilmodule
-    state = allModules.statemodule
     template = hiddenClientsDisplayTemplate.innerHTML
 
     displayAllKnownClients()
@@ -34,6 +30,7 @@ clientsdisplaymodule.initialize = ->
     return
     
 ############################################################
+#region internal functions
 displayAllKnownClients = ->
     log "displayAllKnownClients"
     clientsList = state.get("clientsList")
@@ -67,5 +64,4 @@ clientDisplayClicked = (evt) ->
     allModules.secretspacepagemodule.slideIn()
     return
 
-
-module.exports = clientsdisplaymodule
+#endregion

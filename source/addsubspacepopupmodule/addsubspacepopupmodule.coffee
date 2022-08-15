@@ -1,23 +1,19 @@
-addsubspacepopupmodule = {name: "addsubspacepopupmodule"}
 ############################################################
-#region printLogFunctions
-log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["addsubspacepopupmodule"]?  then console.log "[addsubspacepopupmodule]: " + arg
-    return
-ostr = (obj) -> JSON.stringify(obj, null, 4)
-olog = (obj) -> log "\n" + ostr(obj)
-print = (arg) -> console.log(arg)
+#region debug
+import { createLogFunctions } from "thingy-debug"
+{log, olog} = createLogFunctions("addsubspacepopupmodule")
 #endregion
+
 
 ############################################################
 #region modulesFromEnvironment
-mustache = require("mustache")
+import M from "mustache"
 
 ############################################################
-utl = null
-state = null
-popupModule = null
-secretSpacePage = null
+import * as utl from "./utilsmodule.js"
+import * as state from "./statemodule.js"
+import * as popupModule from "./popupmodule.js"
+import * as secretSpacePage from "./secretspacepagemodule"
 
 #endregion
 
@@ -36,15 +32,9 @@ noOptionsLine = "<p>No Easy Click Options!</p>"
 #endregion
 
 ############################################################
-addsubspacepopupmodule.initialize = () ->
-    log "addsubspacepopupmodule.initialize"
-    utl = allModules.utilmodule
-    state = allModules.statemodule
-    popupModule = allModules.popupmodule
-    secretSpacePage = allModules.secretspacepagemodule
-
+initialize = ->
+    log "initialize"
     clientTemplate = hiddenClientsDisplayTemplate.innerHTML
-
 
     #addsubspacePopup.
     popupModule.wireUp(addsubspacePopup, applyAdd)
@@ -67,7 +57,7 @@ displayOptions = ->
         cObj.index = i
         cObj.type = obj.type
         cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
-        optionsContent += mustache.render(clientTemplate, cObj)
+        optionsContent += M.render(clientTemplate, cObj)
         count++
     
     if !optionsContent then easyAddOptionsContainer.innerHTML = noOptionsLine
@@ -127,7 +117,7 @@ selectClientFor = (el) ->
 #endregion
 
 ############################################################
-addsubspacepopupmodule.addSubspace = (client) ->
+export addSubspace = (client) ->
     log "addsubspacepopupmodule.addSubspace"
     currentClient = client
 
@@ -136,5 +126,3 @@ addsubspacepopupmodule.addSubspace = (client) ->
     popupModule.popupForContentElement(addsubspacePopup)
     return
 
-    
-module.exports = addsubspacepopupmodule
