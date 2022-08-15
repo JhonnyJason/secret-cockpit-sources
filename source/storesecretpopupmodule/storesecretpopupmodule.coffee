@@ -11,7 +11,7 @@ print = (arg) -> console.log(arg)
 
 ############################################################
 #region modulesFromEnvironment
-mustache = require("mustache")
+M = require("mustache")
 
 ############################################################
 utl = null
@@ -62,7 +62,7 @@ displayStoreOptions = ->
         cObj.index = i
         cObj.type = obj.type
         cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
-        optionsContent += mustache.render(clientTemplate, cObj)
+        optionsContent += M.render(clientTemplate, cObj)
         count++
     
     if !optionsContent then storesecretOptionsContainer.innerHTML = noStoreOptionsLine

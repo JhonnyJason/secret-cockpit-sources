@@ -42,7 +42,7 @@ displayAllKnownClients = ->
         cObj.index = i
         cObj.type = obj.type
         cObj.label = utl.idOrAlias(obj.client.publicKeyHex)        
-        content += mustache.render(template, cObj)
+        content += M.render(template, cObj)
 
     if content then clientsDisplayContainer.innerHTML = content
     else clientsDisplayContainer.innerHTML = emptyContainerElement

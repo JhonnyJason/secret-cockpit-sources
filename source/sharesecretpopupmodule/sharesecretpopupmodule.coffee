@@ -11,7 +11,7 @@ print = (arg) -> console.log(arg)
 
 ############################################################
 #region modulesFromEnvironment
-mustache = require("mustache")
+M = require("mustache")
 
 ############################################################
 utl = null
@@ -83,7 +83,7 @@ displayShareOptions = ->
         client = clientStore.clientById(id) 
         if client? then cObj.type = client.type
         else cObj.type = ""
-        optionsContent += mustache.render(clientTemplate, cObj)
+        optionsContent += M.render(clientTemplate, cObj)
         count++
     
     if !optionsContent then sharesecretOptionsContainer.innerHTML = noshareOptionsLine
@@ -106,7 +106,7 @@ displayShareOptions = ->
     #     cObj.index = i
     #     cObj.type = obj.type
     #     cObj.label = utl.idOrAlias(obj.client.publicKeyHex)
-    #     optionsContent += mustache.render(clientTemplate, cObj)
+    #     optionsContent += M.render(clientTemplate, cObj)
     #     count++
     
     # if !optionsContent then sharesecretOptionsContainer.innerHTML = noshareOptionsLine

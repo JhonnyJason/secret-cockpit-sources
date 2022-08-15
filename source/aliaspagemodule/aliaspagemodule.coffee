@@ -52,7 +52,7 @@ syncAliasesFromState = ->
         cObj.id = utl.add0x(id)
         cObj.alias = aliasModule.aliasFrom(id)
         if !cObj.alias? then cObj.alias = ""
-        content += mustache.render(aliasTemplate, cObj)
+        content += M.render(aliasTemplate, cObj)
 
     if content then aliasContainer.innerHTML = content
     else aliasContainer.innerHTML = noIdsElement

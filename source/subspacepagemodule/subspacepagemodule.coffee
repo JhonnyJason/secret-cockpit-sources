@@ -12,7 +12,7 @@ print = (arg) -> console.log(arg)
 ############################################################
 #region localModules
 clientFactory  = require("secret-manager-client")
-mustache = require("mustache")
+M = require("mustache")
 
 ############################################################
 utl = null
@@ -152,7 +152,7 @@ displayCurrentSubspace = ->
     content = ""
     for id in secretIds
         cObj.secretId = id
-        content += mustache.render(secretTemplate, cObj)
+        content += M.render(secretTemplate, cObj)
 
     if content then sharedSecretsContainer.innerHTML = content
     else sharedSecretsContainer.innerHTML = noSecretElement

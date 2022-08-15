@@ -12,7 +12,7 @@ print = (arg) -> console.log(arg)
 ############################################################
 #region localModules
 clientFactory  = require("secret-manager-client")
-mustache = require("mustache")
+M = require("mustache")
 
 ############################################################
 utl = null
@@ -233,7 +233,7 @@ displayCurrentSecretSpace = ->
     content = ""
     for id in secretIds when currentSpace[id].secret?
         cObj.secretId = id
-        content += mustache.render(secretTemplate, cObj)
+        content += M.render(secretTemplate, cObj)
 
     if content then secretsContainer.innerHTML = content
     else secretsContainer.innerHTML = noSecretElement
@@ -263,7 +263,7 @@ displaySubspaces = ->
     for id in secretIds when !currentSpace[id].secret?
         cObj.subspaceId = id
         cObj.subspaceLabel = utl.idOrAlias(id)
-        content += mustache.render(subspaceTemplate, cObj)
+        content += M.render(subspaceTemplate, cObj)
 
     if content then subspacesContainer.innerHTML = content
     else subspacesContainer.innerHTML = noSubspaceElement

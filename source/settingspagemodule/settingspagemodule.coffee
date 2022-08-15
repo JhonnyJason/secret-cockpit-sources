@@ -99,8 +99,6 @@ syncSettingsToState = ->
     state.set("storeUnsafeInUnsafe", checked)
     checked = storeInFloatingInput.checked
     state.set("storeUnsafeInFloating", checked)
-    checked = storeInSignatureInput.checked
-    state.set("storeUnsafeInSignature", checked)
 
     ## KeyLogger Protection
     checked = keyloggerProtectionInput.checked
