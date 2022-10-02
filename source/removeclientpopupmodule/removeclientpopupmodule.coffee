@@ -24,7 +24,7 @@ currentClient = null
 ############################################################
 removeclientpopupmodule.initialize = ->
     log "removeclientpopupmodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     popupModule = allModules.popupmodule
     clientStore = allModules.clientstoremodule
     secretSpacePage = allModules.secretspacepagemodule

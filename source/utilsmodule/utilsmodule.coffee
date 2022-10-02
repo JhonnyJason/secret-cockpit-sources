@@ -1,8 +1,8 @@
-utilmodule = {name: "utilmodule"}
+utilsmodule = {name: "utilsmodule"}
 ############################################################
 #region printLogFunctions
 log = (arg) ->
-    if allModules.debugmodule.modulesToDebug["utilmodule"]?  then console.log "[utilmodule]: " + arg
+    if allModules.debugmodule.modulesToDebug["utilsmodule"]?  then console.log "[utilsmodule]: " + arg
     return
 ostr = (obj) -> JSON.stringify(obj, null, 4)
 olog = (obj) -> log "\n" + ostr(obj)
@@ -10,35 +10,35 @@ print = (arg) -> console.log(arg)
 #endregion
 
 secUtl = require("secret-manager-crypto-utils")
-Object.assign(utilmodule, secUtl)
+Object.assign(utilsmodule, secUtl)
 
 msgBox = require("./messageboxmodule")
 
 ############################################################
-utilmodule.add0x = (hex) ->
+utilsmodule.add0x = (hex) ->
     if !hex? then throw new Error("add0x - undefined argument!")
     return hex unless hex[0] != "0" or hex[1] != "x"
     return "0x"+hex
 
-utilmodule.strip0x = (hex) ->
+utilsmodule.strip0x = (hex) ->
     if !hex? then throw new Error("strip0x - undefined argument!")
     return hex unless hex[0] == "0" and hex[1] == "x"
     return hex.slice(2)
 
 ############################################################
-utilmodule.idOrAlias = (id) ->
+utilsmodule.idOrAlias = (id) ->
     alias = allModules.idaliasmodule.aliasFrom(id)
     if alias then return alias
-    else return utilmodule.add0x(id)
+    else return utilsmodule.add0x(id)
 
 ############################################################
-utilmodule.seedToKey = (seed) ->
+utilsmodule.seedToKey = (seed) ->
     hashHex = await secUtl.sha512Hex(seed)
     shift = parseInt(hashHex[0], 16) * 2
     return hashHex.substr(shift, 64)
 
 ############################################################
-utilmodule.copyToClipboard = (text) ->
+utilsmodule.copyToClipboard = (text) ->
     try 
         await navigator.clipboard.writeText(text)
         log "Clipboard API succeeded"
@@ -69,4 +69,4 @@ utilmodule.copyToClipboard = (text) ->
     return
 
 
-module.exports = utilmodule
+module.exports = utilsmodule

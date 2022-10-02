@@ -43,7 +43,7 @@ noshareOptionsLine = "<p>No Options to share the Secret!</p>"
 ############################################################
 sharesecretpopupmodule.initialize = ->
     log "sharesecretpopupmodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     msgBox = allModules.messageboxmodule
     popupModule = allModules.popupmodule

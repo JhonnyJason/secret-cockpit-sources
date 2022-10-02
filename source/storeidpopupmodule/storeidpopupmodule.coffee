@@ -38,7 +38,7 @@ noStoreOptionsLine = "<p>No Options to Store the Id!</p>"
 ############################################################
 storeidpopupmodule.initialize = ->
     log "storeidpopupmodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     popupModule = allModules.popupmodule
     clientTemplate = hiddenClientsDisplayTemplate.innerHTML

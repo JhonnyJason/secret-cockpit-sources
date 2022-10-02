@@ -39,7 +39,7 @@ noStoreOptionsLine = "<p>No Options to Store the Secret!</p>"
 ############################################################
 storesecretpopupmodule.initialize = ->
     log "storesecretpopupmodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     popupModule = allModules.popupmodule
     clientTemplate = hiddenClientsDisplayTemplate.innerHTML

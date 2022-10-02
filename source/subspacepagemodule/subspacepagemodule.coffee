@@ -44,7 +44,7 @@ noSecretElement = "<p>No Secret in this Subspace :-)</p>"
 ############################################################
 subspacepagemodule.initialize = ->
     log "subspacepagemodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     aliasModule = allModules.idaliasmodule
     secretStore = allModules.clientstoremodule

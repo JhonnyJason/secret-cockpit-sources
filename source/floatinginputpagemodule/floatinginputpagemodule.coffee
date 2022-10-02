@@ -28,7 +28,7 @@ currentClient = null
 ############################################################
 floatinginputpagemodule.initialize = () ->
     log "floatinginputpagemodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     autoDetect = allModules.autodetectkeysmodule
     clientStore = allModules.clientstoremodule

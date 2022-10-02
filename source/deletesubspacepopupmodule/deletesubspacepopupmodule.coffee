@@ -24,7 +24,7 @@ currentSubspaceId = null
 ############################################################
 deletesubspacepopupmodule.initialize = () ->
     log "deletesubspacepopupmodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     popupModule = allModules.popupmodule
     secretSpacePage = allModules.secretspacepagemodule
 

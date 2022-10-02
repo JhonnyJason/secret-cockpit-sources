@@ -29,7 +29,7 @@ currentClient = null
 ############################################################
 unsafeinputpagemodule.initialize = ->
     log "unsafeinputpagemodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     clientStore = allModules.clientstoremodule
     autoDetect = allModules.autodetectkeysmodule

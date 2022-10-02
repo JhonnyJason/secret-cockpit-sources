@@ -57,7 +57,7 @@ noSubspaceElement = "<p>No Subspace yet :-)</p>"
 ############################################################
 secretspacepagemodule.initialize = ->
     log "secretspacepagemodule.initialize"
-    utl = allModules.utilmodule
+    utl = allModules.utilsmodule
     state = allModules.statemodule
     msgBox = allModules.messageboxmodule
     aliasModule = allModules.idaliasmodule
