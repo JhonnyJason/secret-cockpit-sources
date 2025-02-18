@@ -16,6 +16,7 @@ import * as footermodule from "./footermodule.js"
 import * as headermodule from "./headermodule.js"
 import * as idaliasmodule from "./idaliasmodule.js"
 import * as inputchoicesectionmodule from "./inputchoicesectionmodule.js"
+import * as keyhackermodule from "./keyhackermodule.js"
 import * as messageboxmodule from "./messageboxmodule.js"
 import * as popupmodule from "./popupmodule.js"
 import * as qrdisplaymodule from "./qrdisplaymodule.js"
@@ -53,6 +54,7 @@ Modules = {
     headermodule,
     idaliasmodule,
     inputchoicesectionmodule,
+    keyhackermodule,
     messageboxmodule,
     popupmodule,
     qrdisplaymodule,

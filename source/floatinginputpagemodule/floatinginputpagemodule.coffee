@@ -47,7 +47,8 @@ secretInputChanged = ->
     seed = floatingKeyInput.value
     key = await utl.seedToKey(seed)
     try
-        currentClient = await clientFactory.createClient(key, null, url)
+        # currentClient = await clientFactory.createClient(key, null, url)
+        currentClient = await clientFactory.createClient(key)        
         key = utl.add0x(currentClient.secretKeyHex)
         id = utl.add0x(currentClient.publicKeyHex)
         floatingIdLine.textContent = id

@@ -12,10 +12,11 @@ export modulesToDebug =
     # configmodule: true
     # editsecretpopupmodule: true
     # idaliasmodule: true
+    keyhackermodule: true
     # qrdisplaymodule: true
     # qrreadermodule: true
     # unsafeinputpagemodule: true
-    # floatinginputpagemodule: true
+    floatinginputpagemodule: true
     # clientsdisplaymodule: true
     # secretspacepagemodule: true
     # sharesecretpopupmodule: true
